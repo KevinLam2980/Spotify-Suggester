@@ -1,0 +1,56 @@
+.App {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.header-container {
+  height: 15vh;
+  background-color: #1db954;
+}
+
+.search-container {
+  height: 25vh;
+}
+
+.userData-container {
+  height: 60vh;
+  background-color: #1db954;
+}
+
+.data-split-container {
+  display: flex;
+  justify-content: space-evenly;
+  height: 45vh;
+}
+
+.song-list-container {
+  margin: 2% 2%;
+  padding: 4%;
+  width: 45%;
+
+  background-color: white;
+
+  border: 1px solid rgb(210, 210, 210);
+  border-radius: 6px;
+  box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
+}
+
+.mood-filters-container {
+  background-color: #191414;
+  height: 15vh;
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.mood-filter {
+  margin: 2% 2%;
+  width: 15%;
+
+  background-color: white;
+
+  border: 1px solid rgb(210, 210, 210);
+  border-radius: 6px;
+  box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
+}
