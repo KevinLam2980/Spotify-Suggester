@@ -64,16 +64,16 @@ body {
   position: absolute;
   height: 60px;
   width: 185px;
-  top: 14px;
+  top: 60px;
   right: 0px;
-  left: 14px;
+  left: 10%;
   bottom: 0px;
 }
 
 .svg-icon {
   position: absolute;
-  left: 28%;
-  top: 2%;
+  left: 30%;
+  top: 60px;
   height: 30px;
   width: 30px;
   fill: white;
@@ -95,17 +95,25 @@ body {
 
 .user-card {
   position: absolute;
-  left: 96%;
-  top: 1.6%;
+  left: 85%;
+  top: 5%;
 }
 
 
 .likes-container {
   position: absolute;
-  top: 55%;
-  left: 6%;
+  top: 65%;
+  left: 10%;
   background-color: #191414;
   width: 30%;
+}
+
+.rendered-songs {
+  margin: 1% auto;
+  background-color: pink;
+  height: 30vh;
+  width: 80%;
+  border:4px solid white;
 }
 
 .likes-container h2 {
@@ -199,7 +207,7 @@ body {
 
 .suggestions-container {
   position: absolute;
-  top: 55%;
+  top: 65%;
   left: 60%;
   background-color: #191414;
   width: 30%;
