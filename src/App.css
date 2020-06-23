@@ -110,7 +110,7 @@ body {
 
 .rendered-songs {
   margin: 1% auto;
-  background-color: pink;
+  /* background-color: pink; */
   height: 30vh;
   width: 80%;
   border:4px solid white;
