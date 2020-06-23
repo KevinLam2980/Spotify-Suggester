@@ -224,7 +224,16 @@ body {
 .signin-div {
   color: white;
   padding: 10%;
-  margin: 10% 15%;
+  margin: 8% 15%;
+}
+
+h2 {
+  font-size: 3rem;
+}
+
+input {
+  margin: 1% 0;
+  padding: 1.5% 3%;
 }
 
 .signin {
