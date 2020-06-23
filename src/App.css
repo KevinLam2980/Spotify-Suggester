@@ -220,3 +220,22 @@ body {
   left: 33%;
 }
 
+/* Signin component */
+.signin-div {
+  color: white;
+  padding: 10%;
+  margin: 10% 15%;
+}
+
+.signin {
+  background-color: #1cb853;
+  border-radius: 500px;
+  color: white;
+  font-size: 1rem;
+  padding: 1.5% 3%;
+}
+
+.signin:hover {
+  background-color: #1ED760;
+  cursor: pointer;
+}
