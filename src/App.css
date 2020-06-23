@@ -5,6 +5,10 @@
   text-align: center;
 }
 
+body {
+  background-color: #0c0a04;
+}
+
 .header-container {
   height: 15vh;
   background-color: #1db954;
@@ -54,3 +58,165 @@
   border-radius: 6px;
   box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
 }
+
+
+#logo {
+  position: absolute;
+  height: 60px;
+  width: 185px;
+  top: 14px;
+  right: 0px;
+  left: 14px;
+  bottom: 0px;
+}
+
+.svg-icon {
+  position: absolute;
+  left: 28%;
+  top: 2%;
+  height: 30px;
+  width: 30px;
+  fill: white;
+}
+
+#query{
+  position: absolute;
+  width: 470px;
+  border-radius: 2px;
+  border: none;
+  top: 2.6%;
+  left: 33%;
+}
+
+#query:focus {
+  border: #FFFF;
+}
+
+
+.user-card {
+  position: absolute;
+  left: 96%;
+  top: 1.6%;
+}
+
+
+.likes-container {
+  position: absolute;
+  top: 55%;
+  left: 6%;
+  background-color: #191414;
+  width: 30%;
+}
+
+.likes-container h2 {
+  color: white;
+}
+
+#like-header-grn {
+  color: #1db954;
+}
+
+.user-card-d {
+  position: absolute;
+  width: 444px;
+  height: 624px;
+  left: 35%;
+  top: 10%;
+  background: #191414;
+  border-radius: 5px 5px 5px 5px;
+
+}
+
+#username-input {
+  position: absolute;
+  top: 40%;
+  right: 18.77%;
+  background: #FFFFFF;
+  border-radius: 5px;
+  height: 30px;
+  border:none;
+  width: 280px;
+}
+
+.username-label{
+  position: absolute;
+  right: 66%;
+  top: 35%;
+  color: white;
+}
+
+.account-update-btn{
+  position: absolute;
+  top: 70%;
+  right: 18%;
+  width: 280px;
+  height: 32px;
+  background:#1db954 ;
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+
+
+.account-logout-btn{
+  position: absolute;
+  top: 90%;
+  right: 18%;
+  width: 280px;
+  height: 32px;
+  background: #FFFFFF;
+  border-radius: 5px;
+  border: none;
+  color: black;
+}
+
+.user-card-d h2 {
+  position: absolute;
+  top: 22%;
+  right: 35.2%;
+  color: #1db954;
+}
+
+.user-card-d a{
+  position: absolute;
+  top: 60%;
+  right: 46%;
+  text-decoration: none;
+  color: #1db954;
+}
+
+
+.user-card-d img {
+  border: 1px white solid;
+  height: 120px;
+  width: 120px;
+  position: absolute;
+  top: 3%;
+  left: 35.5%;
+  border-radius: 30px;
+
+}
+
+.suggestions-container {
+  position: absolute;
+  top: 55%;
+  left: 60%;
+  background-color: #191414;
+  width: 30%;
+}
+
+.suggestions-container h2 {
+  color: white
+}
+
+.suggestions-header-grn {
+  color: #1db954
+}
+
+#dropdown {
+  position: absolute;
+  top: 7%;
+  width: 200px;
+  left: 33%;
+}
+
