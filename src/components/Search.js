@@ -1,9 +1,7 @@
 import React, {useState} from 'react';
-
-
 import search from "../assets/search.svg"
 
-
+import { connect } from "react-redux"
 
 
 const Search = props => {
@@ -50,4 +48,4 @@ const Search = props => {
     </>
   )
 }
-export default Search;
+export default connect(null, {})(Search) 

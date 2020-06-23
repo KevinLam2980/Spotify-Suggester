@@ -7,12 +7,19 @@ export const intialState = {
 
 }
 
-
-
-
-
-export const spotifyReducer = (state = intialState, action) => {
+export const spotifyReducer = (state = intialState, action) =>{
     switch(action.type) {
+        case "INIT_LOAD" :
+            return {
+                ...state,
+                isFethcingData: true,
+            }
+        case "SHOW_LIKED":
+            return {
+                ...state,
+                isFethcingData: false,
+                likedSongs: action.payload
+            }
         default: 
             return state;
     }
