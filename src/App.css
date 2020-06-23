@@ -236,7 +236,7 @@ input {
   padding: 1.5% 3%;
 }
 
-.signin {
+.signup {
   background-color: #1cb853;
   border-radius: 500px;
   color: white;
@@ -244,7 +244,11 @@ input {
   padding: 1.5% 3%;
 }
 
-.signin:hover {
+.signup:hover {
   background-color: #1ED760;
+  cursor: pointer;
+}
+
+.login:hover {
   cursor: pointer;
 }

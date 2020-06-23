@@ -7,7 +7,8 @@ import './App.css';
 
 //Component Imports
 import Search from './components/Search';
-import SignIn from './components/SignIn';
+import SignUp from './components/SignUp';
+import Login from './components/Login';
 import Dashboard from "./components/Dashboard"
 import UserCard from "./components/UserCard"
 
@@ -15,12 +16,12 @@ function App() {
   return (
     <Router>
       <div className='App'>
-        <Route exact path="/" component={SignIn} />
+        <Route exact path="/" component={SignUp} />
 
         {/* Below will turn into Private Routes */}
         <PrivateRoute exact path="/user" component={UserCard} />
         <PrivateRoute exact path="/dashboard" component={Dashboard} />
-        <Route exact path="/login" component={SignIn} />
+        <Route exact path="/login" component={Login} />
       </div>
     </Router>
   );
