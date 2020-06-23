@@ -18,14 +18,15 @@ const SignIn = props => {
         setForm({ ...form, [name]: value });
     }
 
-    let createUser = newUser => {
-        axios.post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", newUser)
+    let loginUser = existingUser => {
+        axios
+            .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", existingUser)
             .then(response => {
                 localStorage.setItem('token', response.data.token);
-                push("/login");
+                push("/dashboard");
             })
             .catch(error => {
-                console.log("Error", error)
+                console.log("Error", error.response)
             })
             .finally(() => {
                 setForm(emptyUser);
@@ -33,37 +34,24 @@ const SignIn = props => {
 
     }
 
-    // let createUser = newUser => {
-    //     axiosWithAuth()
-    //         .post("/auth/login", newUser)
-    //         .then(response => {
-    //             localStorage.setItem('token', response.data.token);
-    //             debugger;
-    //             push("/dashboard");
-    //         })
-    //         .catch(error => {
-    //             console.log("Error", error)
-    //         })
-    //         .finally(() => {
-    //             setForm(emptyUser);
-    //         });
-
-    // }
-
     const handleSubmit = e => {
         e.preventDefault();
-        const newUser = {
+        const existingUser = {
             email: form.email.trim(),
             password: form.password.trim()
         }
-        createUser(newUser);
+        loginUser(existingUser);
 
+    }
+
+    const handleClick = e => {
+        push("/");
     }
 
     return (
         <div className="signin-div">
 
-            <h2>Connect with Spotify!</h2>
+            <h2>Welcome back! Log in</h2>
             <form onSubmit={handleSubmit}>
                 <input
                     type="email"
@@ -74,16 +62,20 @@ const SignIn = props => {
                 />
                 <br />
                 <input
-                    type="password"
+                    type="text"
                     name="password"
                     placeholder="Enter password"
                     value={form.password}
                     onChange={handleChange}
                 />
                 <br />
-                <button className="signin">Sign up</button>
+                <button className="signup">Log in</button>
             </form>
-            <p>Already registered?</p>
+            <div>
+                <p>New here?
+                    <div className="login" onClick={handleClick}>Sign up</div>
+                </p>
+            </div>
         </div>
     )
 }
