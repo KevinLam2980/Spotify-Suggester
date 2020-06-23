@@ -29,14 +29,9 @@ const Search = props => {
           id="query"
           name="q"
           onChange={changeHandler}
-          placeholder="Search for Artists, Songs, Albums"
+          placeholder="Search for Songs"
           value={search.q}
         />
-        <select name="type" value={search.type} onChange={changeHandler} id="dropdown">
-          <option>Select A Role</option>
-          <option value="album">Album</option>
-          <option value="artist">Artist</option>
-        </select>
       </form>
       <div className="user-card">
         <a href='/user' id="user-icon">

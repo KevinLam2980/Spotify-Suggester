@@ -20,6 +20,10 @@ const Dashboard = props => {
            </div>
         </header>
 
+        <div className="rendered-songs">
+        
+        </div>
+
         <div className="likes-container">
             <Likes />
         </div>
