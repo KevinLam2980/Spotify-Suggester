@@ -27,6 +27,7 @@ const UserCard = props => {
     }
 
     const logOut = () =>{
+        localStorage.removeItem('token')
         push("/")
     }
 
