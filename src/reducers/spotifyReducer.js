@@ -1,6 +1,7 @@
 export const intialState = {
     username: "",
     likedSongs: [],
+    user_id:"",
     isFethcingData: false,
     errorMessage: "",
 
