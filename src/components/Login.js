@@ -22,8 +22,8 @@ const SignIn = props => {
         axios
             .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", existingUser)
             .then(response => {
-                console.log(response)
                 localStorage.setItem('token', response.data.token);
+                console.log(response)
                 push("/dashboard");
             })
             .catch(error => {
@@ -49,9 +49,12 @@ const SignIn = props => {
         push("/");
     }
 
+    
     return (
         <div className="signin-div">
-
+            {
+                console.log("Yes it's working")
+            }
             <h2>Welcome back! Log in</h2>
             <form onSubmit={handleSubmit}>
                 <input

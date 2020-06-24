@@ -1,5 +1,7 @@
 import React from "react"
 
+
+
 import Search from "./Search"
 import Likes from "./Likes"
 import Suggestions from "./Suggestions"
@@ -34,6 +36,10 @@ const Dashboard = props => {
         </>
     )
 }
+
+
+
+
 
 
 export default Dashboard;
