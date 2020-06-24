@@ -3,7 +3,9 @@ export const intialState = {
     user_id:"",
     likedSongs: [],
     suggestedSongs: [],
-    songList: [],
+    songList: [
+        
+    ],
     isFethcingData: false,
     errorMessage: "",
 
@@ -26,6 +28,11 @@ export const spotifyReducer = (state = intialState, action) =>{
             return {
                 ...state,
                 email:action.payload
+            }
+        case 'GET_ID' : 
+            return{
+                ...state,
+                id: action.payload
             }
         default: 
             return state;

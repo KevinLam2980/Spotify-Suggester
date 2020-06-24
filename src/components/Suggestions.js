@@ -10,10 +10,11 @@ const Suggestions = props => {
                 Suggestions:
             </h2>
                 <div className="suggestions-render-ax">
-                    <h2>Suggestion</h2>
-                    <h2>Suggestion</h2>
-                    <h2>Suggestion</h2>
-                    <h2>Suggestion</h2>
+                    {
+                        props.suggestions.map(suggestion => {
+                            // Return a suggestion component (we need to make this component)   
+                        })
+                    }
                 </div>
         </div>
     )
