@@ -1,8 +1,9 @@
 import React, {useState, useEffect} from "react"
 import {useHistory} from "react-router-dom"
 
-import {updateUser} from "../actions"
 import { connect } from "react-redux"
+
+import axios from "axios"
 
 import axiosWithAuth from "../util/axiosWithAuth"
 
@@ -17,9 +18,32 @@ const UserCard = props => {
     } = useHistory();
 
     const changeHandler = e => {
+        let name = e.target.name;
+        let value = e.target.value;
+
         setUser({
-            ...user,
-            [e.target.name]: e.target.value
+        ...user,
+        [name]: value,
+        });
+    }
+
+    
+
+    const logOut = () =>{
+        localStorage.removeItem('token')
+        push("/")
+        //Logout
+    }
+
+
+    const updateUser = updatedUser => {
+        axiosWithAuth()
+        .put(`/api/user/${props.id}`, updatedUser)
+        .then(res =>{
+        console.log(res)
+        })
+        .catch(err =>{
+            console.log(err)
         })
     }
 
@@ -29,34 +53,25 @@ const UserCard = props => {
         const updatedUser = {
             ...user
         }
-        props.updateUser(updatedUser)
-        setUser({
-            email:""
-        })
-        push('/dashboard')
+        updateUser(updatedUser)
+        push('/user')
     }
 
-    const logOut = () =>{
-        localStorage.removeItem('token')
-        push("/")
-        //Logout
-    }
-
-
-    
 
     useEffect(() => {
         axiosWithAuth()
         .get(`/api/user/${props.id}`)
         .then(res => {
-            console.log(res)
-            debugger;
-            setUser(res.data.email)
+            console.log(res.data.email)
+            setUser({
+                ...user,
+                email: res.data.email
+            })
         })
         .catch(err => {
-            console.log(err, "Error")
+        console.log(err, "Error")
         })
-    }, [])
+    }, [props.id])
 
 
     
@@ -69,15 +84,16 @@ const UserCard = props => {
                 <input 
                 type="text"
                 value={user.email}
-                name="username"
+                name="email"
                 onChange={changeHandler}
                 placeholder="Username"
                 id="username-input"
                 />             
+                
                 <button className="account-update-btn"> Save Changes</button>
-                <button className="account-logout-btn" onClick={logOut}> Log Out</button>
+                
             </form>
-
+            <button className="account-logout-btn" onClick={logOut}> Log Out</button>
         
         </div>
     )
@@ -85,10 +101,11 @@ const UserCard = props => {
 
 
 const mapStateToProps = state => {
+    debugger;
     return {
-        id: state.user_id,  
-    }
+        id: state.id,  
+    }    
 }
 
 
-export default connect(mapStateToProps, {updateUser})(UserCard);
+export default connect(mapStateToProps, {})(UserCard);

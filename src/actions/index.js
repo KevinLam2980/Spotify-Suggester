@@ -13,37 +13,22 @@ export const UNLIKE_SONG = "UNLIKE_SONG";
 export const UPDATE_USER = "UPDATE_USER";
 
 export const GET_ID = "GET_ID";
+export const ID = "ID"
 
 
-
-
-
-export const loginCall = existingUser => dispatch => {
-         axios
+export const loginCall = existingUser => dispatch => {  
+        dispatch({type: "GET_ID"})     
+        axios
             .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", existingUser)
             .then(response => {
                 localStorage.setItem('token', response.data.token);
                 console.log(response)
-                dispatch({type: 'GET_ID', payload: response.data.id})  
+               // localStorage.setItem('id', response.data.id)
+                dispatch({type: 'ID', payload: response.data.id})
             })
             .catch(error => {
                dispatch({type: 'CALL_ERROR', payload: error})
             })
-}
-
-
-export const updateUser = updatedUser => dispatch => {
-    axiosWithAuth()
-    .put(``)
-    .then(res =>{
-        console.log(res)
-       dispatch({type: "UPDATE_USER", payload: res.data})
-    })
-    .catch(err =>{
-       dispatch({type: 'CALL_ERROR', payload: err})
-    })
-}
-
-
+        }
 
 

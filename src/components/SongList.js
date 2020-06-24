@@ -6,14 +6,26 @@ import Song from "./Song"
 const SongList = props => {
     return (
         <div className="render-songs-cnt">
-            {/* Map over props.songList here and render a 
-            "Song" component on every iteration
-            passing props into the component.
-            */}
+            
+        {/* If isFethcingData = falsey 
+        then we go ahead and map over songsList,
+        but if isfetchingdata is true, we display a string 
+        that says 'Search for songs!' */}
+           
             { 
-                props.songs.map(song => {
-                    return <Song key={song.id} artistName={song.artistName} />
-                })
+                props.isFethcingData ? (
+                    'Search for something!'
+                ) : ( props.songList.map(song => {
+                    return (
+                        <div className="song">
+                            <h4>{song.songName}</h4>
+                            <p>{song.artistName}</p>
+                           {/* // <button onClick={}>Like</button> */}
+                        </div>
+                    )
+                }) 
+                )
+                    
             }
         </div>
 
@@ -23,7 +35,8 @@ const SongList = props => {
 
 const mapStateToProps = state => {
     return {
-     songs: state.songList,   
+     songList: state.songList,   
+     isFethcingData: state.isFethcingData
     }
 }
 
