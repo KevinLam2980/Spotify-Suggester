@@ -2,7 +2,8 @@ export const intialState = {
     email: "",
     user_id:"",
     likedSongs: [],
-    suggestSongs: [],
+    suggestedSongs: [],
+    songList: [],
     isFethcingData: false,
     errorMessage: "",
 
@@ -20,6 +21,11 @@ export const spotifyReducer = (state = intialState, action) =>{
                 ...state,
                 isFethcingData: false,
                 likedSongs: action.payload
+            }
+        case 'UPDATE_USER' :
+            return {
+                ...state,
+                email:action.payload
             }
         default: 
             return state;

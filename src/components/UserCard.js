@@ -1,13 +1,16 @@
 import React, {useState, useEffect} from "react"
 import {useHistory} from "react-router-dom"
 
+import { connect } from "react-redux"
+
 import axiosWithAuth from "../util/axiosWithAuth"
 
 const UserCard = props => {
     const [user, setUser] = useState({
-        email: '',
+        email: "",
     })
-    
+
+
     const {
         push
     } = useHistory();
@@ -22,6 +25,14 @@ const UserCard = props => {
     const submitHandler = e => {
         e.preventDefault();
         // update user to api
+        const updatedUser = {
+            ...user
+        }
+        props.updateUser(updatedUser)
+        setUser({
+            email:""
+        })
+        push('/dashboard')
     }
 
     const logOut = () =>{
@@ -33,8 +44,18 @@ const UserCard = props => {
 
     useEffect(() => {
         axiosWithAuth()
-        .get("/api/user/")
+        .get(`/api/user/${props.id}`)
+        .then(res => {
+            console.log(res)
+            setUser(res.data)
+        })
+        .catch(err => {
+            console.log(err, "Error")
+        })
     }, [])
+
+
+    
 
 
     return (
@@ -43,7 +64,7 @@ const UserCard = props => {
                 <label className="username-label">Username</label>
                 <input 
                 type="text"
-                value={user.username}
+                value={user.email}
                 name="username"
                 onChange={changeHandler}
                 placeholder="Username"
@@ -59,4 +80,11 @@ const UserCard = props => {
 }
 
 
-export default UserCard;
+const mapStateToProps = state => {
+    return {
+        id: state.user_id,  
+    }
+}
+
+
+export default connect(mapStateToProps, {updateUser})(UserCard);

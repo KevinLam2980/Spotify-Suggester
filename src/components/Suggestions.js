@@ -1,6 +1,8 @@
 import React from "react"
 
 
+import {connect} from "react-redux"
+
 const Suggestions = props => {
     return (
         <div className="suggestions">
@@ -18,4 +20,10 @@ const Suggestions = props => {
 }
 
 
-export default Suggestions;
+const mapStateToProps = state => {
+    return {
+     suggestions: state.suggestedSongs,   
+    }
+}
+
+export default connect(mapStateToProps, {})(Suggestions);
