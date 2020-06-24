@@ -19,14 +19,12 @@ export const GET_ID = "GET_ID";
 
 
 export const loginCall = existingUser => dispatch => {
-    const {push} = useHistory();
          axios
             .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", existingUser)
             .then(response => {
                 localStorage.setItem('token', response.data.token);
                 console.log(response)
                 dispatch({type: 'GET_ID', payload: response.data.id})  
-                push("/dashboard");
             })
             .catch(error => {
                dispatch({type: 'CALL_ERROR', payload: error})

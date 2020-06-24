@@ -43,12 +43,15 @@ const UserCard = props => {
     }
 
 
+    
+
     useEffect(() => {
         axiosWithAuth()
         .get(`/api/user/${props.id}`)
         .then(res => {
             console.log(res)
-            setUser(res.data)
+            debugger;
+            setUser(res.data.email)
         })
         .catch(err => {
             console.log(err, "Error")

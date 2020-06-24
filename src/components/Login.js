@@ -1,5 +1,9 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
+
+import {connect} from "react-redux"
+
+import {loginCall} from "../actions/index"
 import axios from "axios";
 import axiosWithAuth from "../util/axiosWithAuth";
 
@@ -18,12 +22,11 @@ const SignIn = props => {
         setForm({ ...form, [name]: value });
     }
 
-    let loginUser = existingUser => {
+    // let loginUser = () => {
+    //     loginCall(form);
+    //     setForm(emptyUser);
 
-        props.loginCall(existingUser);
-        setForm(emptyUser);
-
-    }
+    // }
 
     const handleSubmit = e => {
         e.preventDefault();
@@ -31,11 +34,12 @@ const SignIn = props => {
             email: form.email.trim(),
             password: form.password.trim()
         }
-        loginUser(existingUser);
-
+        loginCall(existingUser);
+        setForm(emptyUser);
+        push("/dashboard");
     }
 
-    const handleClick = e => {
+    const routeToSignup = e => {
         push("/");
     }
 
@@ -64,7 +68,7 @@ const SignIn = props => {
             </form>
             <div>
                 <p>New here?
-                    <div className="login" onClick={handleClick}>Sign up</div>
+                    <div className="login" onClick={routeToSignup}>Sign up</div>
                 </p>
             </div>
         </div>
