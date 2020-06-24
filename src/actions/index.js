@@ -1,6 +1,7 @@
-import axios from 'axios'
+import axios from 'axios';
+import { useHistory } from "react-router-dom";
 
-import axiosWithAuth from "../util/axiosWithAuth"
+import axiosWithAuth from "../util/axiosWithAuth";
 
 export const INIT_LOAD = "INIT_LOAD";
 export const SHOW_LIKED = "SHOW_LIKED";
@@ -14,20 +15,22 @@ export const UPDATE_USER = "UPDATE_USER";
 export const GET_ID = "GET_ID";
 
 
-export const getSongs = () => dispatch => {
-    dispatch({type: "INIT_LOAD"})
-    axios
-    .get("")
-    .then( res => {
-        console.log(res)
-        dispatch({type: "SHOW_LIKED", payload: res.data})
-        dispatch({type: "GET_ID", payload:res.data})
-    })
-    .catch(err => {
-        console.log("An error happened with the getSongs call: ", err)
-        dispatch({type:"CALL_ERROR", payload: err})
-    })
 
+
+
+export const loginCall = existingUser => dispatch => {
+    const {push} = useHistory();
+         axios
+            .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", existingUser)
+            .then(response => {
+                localStorage.setItem('token', response.data.token);
+                console.log(response)
+                dispatch({type: 'GET_ID', payload: response.data.id})  
+                push("/dashboard");
+            })
+            .catch(error => {
+               dispatch({type: 'CALL_ERROR', payload: error})
+            })
 }
 
 
@@ -42,5 +45,7 @@ export const updateUser = updatedUser => dispatch => {
        dispatch({type: 'CALL_ERROR', payload: err})
     })
 }
+
+
 
 

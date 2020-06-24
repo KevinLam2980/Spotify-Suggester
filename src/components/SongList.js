@@ -10,7 +10,13 @@ const SongList = props => {
             "Song" component on every iteration
             passing props into the component.
             */}
+            { 
+                props.songs.map(song => {
+                    <Song key={song.id} artistName={song.artistName} />
+                })
+            }
         </div>
+
     )
 }
 

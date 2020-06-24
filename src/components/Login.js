@@ -19,19 +19,9 @@ const SignIn = props => {
     }
 
     let loginUser = existingUser => {
-        axios
-            .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", existingUser)
-            .then(response => {
-                localStorage.setItem('token', response.data.token);
-                console.log(response)
-                push("/dashboard");
-            })
-            .catch(error => {
-                console.log("Error", error.response)
-            })
-            .finally(() => {
-                setForm(emptyUser);
-            });
+
+        props.loginCall(existingUser);
+        setForm(emptyUser);
 
     }
 
@@ -52,9 +42,6 @@ const SignIn = props => {
     
     return (
         <div className="signin-div">
-            {
-                console.log("Yes it's working")
-            }
             <h2>Welcome back! Log in</h2>
             <form onSubmit={handleSubmit}>
                 <input
