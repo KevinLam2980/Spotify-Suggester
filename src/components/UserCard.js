@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from "react"
 import {useHistory} from "react-router-dom"
 
+import {updateUser} from "../actions"
 import { connect } from "react-redux"
 
 import axiosWithAuth from "../util/axiosWithAuth"

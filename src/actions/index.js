@@ -33,7 +33,7 @@ export const getSongs = () => dispatch => {
 
 export const updateUser = updatedUser => dispatch => {
     axiosWithAuth()
-    .put(`/api/user/${props.id}`, user)
+    .put(``)
     .then(res =>{
         console.log(res)
        dispatch({type: "UPDATE_USER", payload: res.data})
