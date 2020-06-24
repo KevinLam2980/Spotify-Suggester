@@ -1,8 +1,6 @@
-import React, { useState } from "react"
+import React, { useState, useEffect} from "react"
 import { useHistory } from "react-router-dom"
-
 import {connect} from "react-redux"
-
 import {loginCall} from "../actions/index"
 import axios from "axios";
 import axiosWithAuth from "../util/axiosWithAuth";
@@ -25,9 +23,27 @@ const SignIn = props => {
     const { push } = useHistory();
 
     const [form, setForm] = useState(emptyUser);
+    const [formErrors, setFormErrors] = useState(initialFormErrors)
+    const [disabled, setDisabled] = useState(initialDisabled)
 
     const handleChange = e => {
         const { name, value } = e.target;
+
+        Yup 
+        .reach(formSchema, name)
+        .validate(value)
+        .then(() => {
+            setFormErrors({
+                ...formErrors,
+                [name]: ""
+            })
+        })
+        .catch(err => {
+            setFormErrors({
+                ...formErrors,
+                [name]: err.errors[0]
+            })
+        })
         setForm({ ...form, [name]: value });
     }
 
@@ -48,6 +64,12 @@ const SignIn = props => {
         push("/dashboard");
     }
 
+    useEffect(() => {
+        formSchema.isValid(form).then(valid => {
+            setDisabled(!valid)
+        })
+    }, [form])
+
     const routeToSignup = e => {
         push("/");
     }
@@ -56,6 +78,10 @@ const SignIn = props => {
     return (
         <div className="signin-div">
             <h2>Welcome back! Log in</h2>
+            <div className="schemaErrors">
+                <h4>{formErrors.email}</h4>
+                <h4>{formErrors.password}</h4>
+            </div>
             <form onSubmit={handleSubmit}>
                 <input
                     type="email"
@@ -73,7 +99,7 @@ const SignIn = props => {
                     onChange={handleChange}
                 />
                 <br />
-                <button className="signup">Log in</button>
+                <button className="signup" disabled={disabled}>Log in</button>
             </form>
             <div>
                 <p>New here?
