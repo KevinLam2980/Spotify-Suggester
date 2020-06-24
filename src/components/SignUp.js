@@ -18,8 +18,10 @@ const SignUp = props => {
     }
 
     let createUser = newUser => {
-        axios.post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", newUser)
+        axios
+        .post("https://spotify-suggestions-backend.herokuapp.com/auth/signup", newUser)
             .then(response => {
+                console.log(response)
                 localStorage.setItem('token', response.data.token);
                 push("/dashboard");
             })

@@ -22,6 +22,7 @@ const SignIn = props => {
         axios
             .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", existingUser)
             .then(response => {
+                console.log(response)
                 localStorage.setItem('token', response.data.token);
                 push("/dashboard");
             })

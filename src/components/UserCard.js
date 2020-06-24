@@ -1,13 +1,11 @@
-import React, {useState} from "react"
+import React, {useState, useEffect} from "react"
 import {useHistory} from "react-router-dom"
 
+import axiosWithAuth from "../util/axiosWithAuth"
 
 const UserCard = props => {
     const [user, setUser] = useState({
-        username: '',
-        followers: '',
-        user_img: '',
-        profile_link: ''
+        email: '',
     })
     
     const {
@@ -32,9 +30,15 @@ const UserCard = props => {
         //Logout
     }
 
+
+    useEffect(() => {
+        axiosWithAuth()
+        .get("/api/user/")
+    }, [])
+
+
     return (
         <div className="user-card-d">
-           <img src={user.user_img} href="you" id="user-img-cnt" />
             <form onSubmit={submitHandler}>
                 <label className="username-label">Username</label>
                 <input 
@@ -45,13 +49,10 @@ const UserCard = props => {
                 placeholder="Username"
                 id="username-input"
                 />             
-
                 <button className="account-update-btn"> Save Changes</button>
                 <button className="account-logout-btn" onClick={logOut}> Log Out</button>
             </form>
 
-        <h2>Followers: 33</h2>
-        <a href={user.profile_link}>Profile</a>
         
         </div>
     )
