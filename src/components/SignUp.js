@@ -1,11 +1,20 @@
 import React, { useState } from "react"
 import { useHistory } from "react-router-dom"
 import axios from "axios";
+import formSchema from '../Validation/formSchema'
+import * as Yup from 'yup'
 
 const emptyUser = {
     email: "",
     password: ""
 };
+
+const initialFormErrors = {
+    email: '',
+    password: '',
+}
+
+const initialDisabled = true
 
 const SignUp = props => {
     const { push } = useHistory();
