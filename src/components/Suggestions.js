@@ -3,6 +3,8 @@ import React from "react"
 
 import {connect} from "react-redux"
 
+import Suggestion from './Suggestion'
+
 const Suggestions = props => {
     return (
         <div className="suggestions">
@@ -13,6 +15,7 @@ const Suggestions = props => {
                     {
                         props.suggestions.map(suggestion => {
                             // Return a suggestion component (we need to make this component)   
+                            return <Suggestion key={suggestion.id} artistName={suggestion.artistName} />
                         })
                     }
                 </div>

@@ -12,7 +12,7 @@ const SongList = props => {
             */}
             { 
                 props.songs.map(song => {
-                    <Song key={song.id} artistName={song.artistName} />
+                    return <Song key={song.id} artistName={song.artistName} />
                 })
             }
         </div>
