@@ -1,16 +1,25 @@
-import React from "react"
+import React, {useEffect} from "react"
 
 
 
 import Search from "./Search"
 import Likes from "./Likes"
 import Suggestions from "./Suggestions"
+import SongList from "./SongList"
+
+import {connect} from "react-redux"
 
 
 import spotifylogo from "../assets/spotifylogo.png" 
 
 
 const Dashboard = props => {
+  useEffect(() => {
+
+  })
+   
+   
+   
     return (
       <>
       <header className="nav-search">
@@ -23,7 +32,8 @@ const Dashboard = props => {
         </header>
 
         <div className="rendered-songs">
-        
+            <SongList/>
+        <p>{props.id}</p>
         </div>
 
         <div className="likes-container">
@@ -37,9 +47,12 @@ const Dashboard = props => {
     )
 }
 
+const mapStateToProps = state => {
+   return {
+    id: state.id
+   } 
+}
+export default connect(mapStateToProps, {})(Dashboard);
 
 
 
-
-
-export default Dashboard;

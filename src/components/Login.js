@@ -53,15 +53,20 @@ const SignIn = props => {
 
     // }
 
+
+
     const handleSubmit = e => {
         e.preventDefault();
         const existingUser = {
             email: form.email.trim(),
             password: form.password.trim()
         }
-        loginCall(existingUser);
+        props.loginCall(existingUser);
         setForm(emptyUser);
-        push("/dashboard");
+        // set a timeout - 2 seconds
+        setTimeout(function(){ push("/dashboard")}, 2000);
+       
+       
     }
 
     useEffect(() => {
@@ -111,4 +116,4 @@ const SignIn = props => {
 }
 
 
-export default SignIn;
+export default connect(null,{loginCall})(SignIn);

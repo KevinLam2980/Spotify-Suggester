@@ -260,3 +260,7 @@ input {
 .login:hover {
   cursor: pointer;
 }
+
+.song{
+  color:white;
+}
