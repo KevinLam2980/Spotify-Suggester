@@ -1,24 +1,95 @@
+import albumArt from "../assets/albumArt.jpg"
+
 export const intialState = {
-    email: "",
     id:"",
     likedSongs: [],
     suggestedSongs: [],
     songList: [
         {
             id: 0,
-            songName: "hasd",
-            artistName: "asdasd"
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
         },
         {
-            id: 0,
-            songName: "hasd",
-            artistName: "asdasd"
+            id: 2,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
         },
         {
-            id: 0,
-            songName: "hasd",
-            artistName: "asdasd"
+            id: 3,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
         },
+        {
+            id: 4,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
+        },
+        {
+            id: 5,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
+        },
+        {
+            id: 6,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
+        },
+        {
+            id: 7,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
+        },
+        {
+            id: 8,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
+        },
+        {
+            id: 9,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
+        },
+        {
+            id: 10,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
+        },
+        {
+            id: 11,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
+        },
+        {
+            id: 12,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
+        },
+        {
+            id: 13,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
+        },
+        {
+            id: 14,
+            albumArt: albumArt,
+            songName: "Song Name",
+            artistName: "Artist Name",
+        },
+
     ],
     isFethcingData: false,
     errorMessage: "",

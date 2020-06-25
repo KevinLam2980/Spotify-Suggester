@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from "react"
-import {useHistory} from "react-router-dom"
+import {useHistory, Link} from "react-router-dom"
 
 import { connect } from "react-redux"
 
@@ -36,11 +36,28 @@ const UserCard = props => {
     }
 
 
+    const deleteAccount = () => {
+        axiosWithAuth()
+        .delete(`/api/user/${props.id}`)
+        .then(res => {
+            console.log(res)
+            localStorage.removeItem('token')
+            push('/') 
+        })
+        .catch(err =>{
+            console.log(err)
+        })
+    }
+
+
+
+
     const updateUser = updatedUser => {
         axiosWithAuth()
         .put(`/api/user/${props.id}`, updatedUser)
         .then(res =>{
         console.log(res)
+        alert(`Congrats you updated your username to: ${user.email}`)
         })
         .catch(err =>{
             console.log(err)
@@ -93,6 +110,8 @@ const UserCard = props => {
                 <button className="account-update-btn"> Save Changes</button>
                 
             </form>
+             <Link to="/dashboard" className="back-to-dashboard"><button> Go back </button></Link> 
+            <button className="delete-account-btn" onClick={deleteAccount}>Delete Account</button>
             <button className="account-logout-btn" onClick={logOut}> Log Out</button>
         
         </div>
@@ -101,7 +120,6 @@ const UserCard = props => {
 
 
 const mapStateToProps = state => {
-    debugger;
     return {
         id: state.id,  
     }    

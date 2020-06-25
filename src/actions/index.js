@@ -1,9 +1,6 @@
 import axios from 'axios';
-import { useHistory } from "react-router-dom";
 
-import axiosWithAuth from "../util/axiosWithAuth";
 
-export const INIT_LOAD = "INIT_LOAD";
 export const SHOW_LIKED = "SHOW_LIKED";
 export const CALL_ERROR = "CALL_ERROR";
 
