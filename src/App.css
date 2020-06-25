@@ -261,6 +261,51 @@ input {
   cursor: pointer;
 }
 
+
+.rendered-songs {
+  height: 35vh;
+  margin: 0 auto; 
+  overflow: auto;
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-evenly;
+}
+
+.song::-webkit-scrollbar {
+  display: none
+}
+
 .song{
   color:white;
+  -ms-overflow-style: none;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  align-items: center;
 }
+
+
+.song img {
+  height: 60px;
+  width: 60px;
+}
+
+.render-songs-cnt {
+  width: 100%;
+}
+
+
+.delete-account-btn {
+  position:absolute;
+  top: 82%;
+  width: 280px;
+  height: 32px;
+  right: 18%;
+  background:red;
+  border-radius: 5px;
+  border: none;
+  color: white;
+}
+

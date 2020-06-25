@@ -18,9 +18,10 @@ const SongList = props => {
                 ) : ( props.songList.map(song => {
                     return (
                         <div className="song">
+                            <img src={song.albumArt} alt="Album Art" />
                             <h4>{song.songName}</h4>
                             <p>{song.artistName}</p>
-                           {/* // <button onClick={}>Like</button> */}
+                            <button>Like</button>
                         </div>
                     )
                 }) 
