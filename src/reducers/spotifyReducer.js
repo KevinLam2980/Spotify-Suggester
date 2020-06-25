@@ -7,6 +7,7 @@ export const intialState = {
     songList: [],
     isFethcingData: false,
     errorMessage: "",
+    hasLikedSongs: false
 
 };
 
@@ -16,6 +17,7 @@ export const spotifyReducer = (state = intialState, action) => {
             return {
                 ...state,
                 isFethcingData: true,
+                hasLikedSongs: false
             }
         case 'ID': {
             return {
@@ -51,7 +53,7 @@ export const spotifyReducer = (state = intialState, action) => {
         case "SET_SONGS":
             return {
                 ...state,
-                isFethcingData: false,
+                isFethcingData: true,
                 songList: action.payload
             };
         case 'UPDATE_USER':
@@ -60,6 +62,13 @@ export const spotifyReducer = (state = intialState, action) => {
                 ...state,
                 email: action.payload
             };
+        case "LIKE_SONG":
+            return {
+                ...state,
+                songList: state.songList.filter(song => song.id !== action.payload.id),
+                likedSongs: action.payload,
+                hasLikedSongs: true
+            }
         default:
             return state;
     };

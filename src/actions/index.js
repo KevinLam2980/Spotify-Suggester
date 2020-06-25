@@ -33,3 +33,8 @@ export const setSongs = songList => dispatch => {
     dispatch({ type: "SET_SONGS", payload: songList })
 }
 
+export const addToLikes = song => dispatch => {
+    dispatch({ type: "LIKE_SONG", payload: song })
+    debugger;
+}
+
