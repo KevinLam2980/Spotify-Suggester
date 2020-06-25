@@ -15,15 +15,15 @@ import axios from "axios";
 
 
 const Dashboard = props => {
-  useEffect(() => {
-    axios.get("https://spotify-suggestions-backend.herokuapp.com/spotify/tracks")
-      .then(response => {
-        props.setSongs(response.data)
-      })
-      .catch(error => {
-        console.log(error);
-      })
-  }, []);
+  // useEffect(() => {
+  //   axios.get("https://spotify-suggestions-backend.herokuapp.com/spotify/tracks")
+  //     .then(response => {
+  //       props.setSongs(response.data)
+  //     })
+  //     .catch(error => {
+  //       console.log(error);
+  //     })
+  // }, []);
 
 
 

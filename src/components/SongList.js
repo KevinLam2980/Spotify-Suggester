@@ -17,12 +17,14 @@ const SongList = props => {
                     'Search for something!'
                 ) : (props.songList.map(song => {
                     return (
-                        <div className="song">
-                            <h4>Song: {song.name}</h4>
-                            <p>Artist: {song.artist}</p>
-                            <p>Album: {song.album}</p>
-                            <button>Like</button>
-                        </div>
+                        <Song
+                            key={song.id}
+                            id={song.id}
+                            name={song.name}
+                            album={song.album.name}
+                            artist={song.artists[0].name}
+                            image={song.album.images[0].url}
+                        />
                     )
                 })
                     )
