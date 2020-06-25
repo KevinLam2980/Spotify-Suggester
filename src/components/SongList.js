@@ -1,32 +1,32 @@
 import React from "react"
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 
 import Song from "./Song"
 
 const SongList = props => {
     return (
         <div className="render-songs-cnt">
-            
-        {/* If isFethcingData = falsey 
+
+            {/* If isFethcingData = falsey 
         then we go ahead and map over songsList,
         but if isfetchingdata is true, we display a string 
         that says 'Search for songs!' */}
-           
-            { 
+
+            {
                 props.isFethcingData ? (
                     'Search for something!'
-                ) : ( props.songList.map(song => {
+                ) : (props.songList.map(song => {
                     return (
                         <div className="song">
-                            <img src={song.albumArt} alt="Album Art" />
-                            <h4>{song.songName}</h4>
-                            <p>{song.artistName}</p>
+                            <h4>Song: {song.name}</h4>
+                            <p>Artist: {song.artist}</p>
+                            <p>Album: {song.album}</p>
                             <button>Like</button>
                         </div>
                     )
-                }) 
-                )
-                    
+                })
+                    )
+
             }
         </div>
 
@@ -36,8 +36,8 @@ const SongList = props => {
 
 const mapStateToProps = state => {
     return {
-     songList: state.songList,   
-     isFethcingData: state.isFethcingData
+        songList: state.songList,
+        isFethcingData: state.isFethcingData
     }
 }
 
