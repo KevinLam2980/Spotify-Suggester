@@ -1,7 +1,9 @@
 import React from "react"
-import {connect} from "react-redux"
+import { connect } from "react-redux"
+import Like from "./Like";
 
 const Likes = props => {
+    console.log(props);
     return (
         <div className="likes">
             <h2 id='like-header-grn'>
@@ -9,14 +11,29 @@ const Likes = props => {
             </h2>
             <div className="imported-likes-ax">
                 {/* Map over Liked Songs here */}
-                
+
                 {
-                    props.likes.map(like => {
-                        
-                    })
+                    props.hasLikedSongs ? (
+                        'Like a song!'
+                    ) : (props.likes.map(like => {
+                        debugger;
+                        return (
+
+                            <Like
+                                key={like.id}
+                                id={like.id}
+                                name={like.name}
+                                album={like.album.name}
+                                artist={like.artists[0].name}
+                                image={like.album.images[0].url}
+                                like={like}
+                            />
+                        )
+
+                    }))
                 }
-                
-                
+
+
             </div>
         </div>
     )
@@ -25,8 +42,8 @@ const Likes = props => {
 
 const mapStateToProps = state => {
     return {
-     likes: state.likedSongs,
-     isFetchingData: state.isFetchingData,
+        likes: state.likedSongs,
+        hasLikedSongs: state.hasLikedSongs,
     }
 }
 

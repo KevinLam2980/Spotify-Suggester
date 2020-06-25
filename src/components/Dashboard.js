@@ -40,7 +40,6 @@ const Dashboard = props => {
 
       <div className="rendered-songs">
         <SongList />
-        <p>{props.id}</p>
       </div>
 
       <div className="likes-container">

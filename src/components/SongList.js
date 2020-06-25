@@ -1,5 +1,5 @@
 import React from "react"
-import { connect } from "react-redux"
+import { connect } from "react-redux";
 
 import Song from "./Song"
 
@@ -13,7 +13,7 @@ const SongList = props => {
         that says 'Search for songs!' */}
 
             {
-                props.isFethcingData ? (
+                !props.isFethcingData ? (
                     'Search for something!'
                 ) : (props.songList.map(song => {
                     return (
@@ -24,6 +24,7 @@ const SongList = props => {
                             album={song.album.name}
                             artist={song.artists[0].name}
                             image={song.album.images[0].url}
+                            song={song}
                         />
                     )
                 })

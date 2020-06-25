@@ -1,7 +1,7 @@
-import React, { useState, useEffect} from "react"
+import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
-import {connect} from "react-redux"
-import {loginCall} from "../actions/index"
+import { connect } from "react-redux"
+import { loginCall } from "../actions/index"
 import axios from "axios";
 import axiosWithAuth from "../util/axiosWithAuth";
 import formSchema from '../Validation/formSchema'
@@ -29,21 +29,21 @@ const SignIn = props => {
     const handleChange = e => {
         const { name, value } = e.target;
 
-        Yup 
-        .reach(formSchema, name)
-        .validate(value)
-        .then(() => {
-            setFormErrors({
-                ...formErrors,
-                [name]: ""
+        Yup
+            .reach(formSchema, name)
+            .validate(value)
+            .then(() => {
+                setFormErrors({
+                    ...formErrors,
+                    [name]: ""
+                })
             })
-        })
-        .catch(err => {
-            setFormErrors({
-                ...formErrors,
-                [name]: err.errors[0]
+            .catch(err => {
+                setFormErrors({
+                    ...formErrors,
+                    [name]: err.errors[0]
+                })
             })
-        })
         setForm({ ...form, [name]: value });
     }
 
@@ -64,9 +64,9 @@ const SignIn = props => {
         props.loginCall(existingUser);
         setForm(emptyUser);
         // set a timeout - 2 seconds
-        setTimeout(function(){ push("/dashboard")}, 2000);
-       
-       
+        setTimeout(function () { push("/dashboard") }, 2000);
+
+
     }
 
     useEffect(() => {
@@ -79,7 +79,7 @@ const SignIn = props => {
         push("/");
     }
 
-    
+
     return (
         <div className="signin-div">
             <h2>Welcome back! Log in</h2>
@@ -116,4 +116,4 @@ const SignIn = props => {
 }
 
 
-export default connect(null,{loginCall})(SignIn);
+export default connect(null, { loginCall })(SignIn);

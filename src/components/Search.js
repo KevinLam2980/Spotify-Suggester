@@ -24,7 +24,6 @@ const Search = props => {
     event.preventDefault();
     axios.post("https://bw3-ds.herokuapp.com/search", search)
       .then(response => {
-        console.log(response.data.tracks.items)
         props.setSongs(response.data.tracks.items)
       })
       .catch(error => {
