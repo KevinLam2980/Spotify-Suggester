@@ -1,112 +1,26 @@
 import albumArt from "../assets/albumArt.jpg"
 
 export const intialState = {
-    id:"",
+    id: "",
     likedSongs: [],
     suggestedSongs: [],
-    songList: [
-        {
-            id: 0,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 2,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 3,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 4,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 5,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 6,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 7,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 8,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 9,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 10,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 11,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 12,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 13,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-        {
-            id: 14,
-            albumArt: albumArt,
-            songName: "Song Name",
-            artistName: "Artist Name",
-        },
-
-    ],
+    songList: [],
     isFethcingData: false,
     errorMessage: "",
 
 };
 
-export const spotifyReducer = (state = intialState, action) =>{
-    switch(action.type) {
-        case 'GET_ID' : 
-        return{
+export const spotifyReducer = (state = intialState, action) => {
+    switch (action.type) {
+        case 'GET_ID':
+            return {
                 ...state,
                 isFethcingData: true,
             }
-        case 'ID' : {
+        case 'ID': {
             return {
                 ...state,
-                email:"",
+                email: "",
                 id: action.payload,
                 likedSongs: [],
                 suggestedSongs: [],
@@ -121,7 +35,7 @@ export const spotifyReducer = (state = intialState, action) =>{
                 errorMessage: "",
             }
         }
-        case "INIT_LOAD" :
+        case "INIT_LOAD":
             return {
                 ...state,
                 isFethcingData: true,
@@ -133,20 +47,20 @@ export const spotifyReducer = (state = intialState, action) =>{
                 isFethcingData: false,
                 likedSongs: action.payload
             };
-        
-        case "SHOW_SONGLIST" :
+
+        case "SET_SONGS":
             return {
                 ...state,
                 isFethcingData: false,
                 songList: action.payload
             };
-        case 'UPDATE_USER' :
-            
+        case 'UPDATE_USER':
+
             return {
                 ...state,
-                email:action.payload
+                email: action.payload
             };
-        default: 
+        default:
             return state;
     };
 };
