@@ -28,20 +28,22 @@ const Dashboard = props => {
   const getSuggestions = () => {
 
     const songId = {
-      {
-        "song_id_list": [
-            `${props.likedSongs[0].id}`
-        ],
-        "recommendation_count": 10
-    }}
-    debugger
-    axios.post('https://whispering-refuge-19940.herokuapp.com/prediction', songId )
+      song_id_list: [
+        `${props.likedSongs[0].id}`
+      ],
+      recommendation_count: 10
+    }
+    axios.post('https://whispering-refuge-19940.herokuapp.com/prediction', songId)
       .then(res => {
+        debugger;
         console.log(res)
       })
       .catch(err => {
-        console.log(err)
+        debugger;
+        console.log(err.message)
       })
+
+
   }
 
   return (

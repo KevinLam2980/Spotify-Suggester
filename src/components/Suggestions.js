@@ -1,7 +1,7 @@
 import React from "react"
 
 
-import {connect} from "react-redux"
+import { connect } from "react-redux"
 
 import Suggestion from './Suggestion'
 
@@ -11,14 +11,14 @@ const Suggestions = props => {
             <h2 className="suggestions-header-grn">
                 Suggestions:
             </h2>
-                <div className="suggestions-render-ax">
-                    {
-                        props.suggestions.map(suggestion => {
-                            // Return a suggestion component (we need to make this component)   
-                            return <Suggestion key={suggestion.id} artistName={suggestion.artistName} />
-                        })
-                    }
-                </div>
+            <div className="suggestions-render-ax">
+                {
+                    props.suggestions.map(suggestion => {
+                        // Return a suggestion component (we need to make this component)   
+                        return <Suggestion key={suggestion.id} artists={suggestion.artistName} />
+                    })
+                }
+            </div>
         </div>
     )
 }
@@ -26,7 +26,7 @@ const Suggestions = props => {
 
 const mapStateToProps = state => {
     return {
-     suggestions: state.suggestedSongs,   
+        suggestions: state.suggestedSongs,
     }
 }
 
