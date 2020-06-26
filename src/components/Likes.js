@@ -13,10 +13,9 @@ const Likes = props => {
                 {/* Map over Liked Songs here */}
 
                 {
-                    props.hasLikedSongs ? (
+                    !props.hasLikedSongs ? (
                         'Like a song!'
                     ) : (props.likes.map(like => {
-                        debugger;
                         return (
 
                             <Like

@@ -1,4 +1,5 @@
 import albumArt from "../assets/albumArt.jpg"
+import { useState } from "react";
 
 export const intialState = {
     id: "",
@@ -66,7 +67,7 @@ export const spotifyReducer = (state = intialState, action) => {
             return {
                 ...state,
                 songList: state.songList.filter(song => song.id !== action.payload.id),
-                likedSongs: action.payload,
+                likedSongs: [action.payload],
                 hasLikedSongs: true
             }
         default:
