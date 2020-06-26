@@ -25,7 +25,24 @@ const Dashboard = props => {
   //     })
   // }, []);
 
+  const getSuggestions = () => {
 
+    const songId = {
+      {
+        "song_id_list": [
+            `${props.likedSongs[0].id}`
+        ],
+        "recommendation_count": 10
+    }}
+    debugger
+    axios.post('https://whispering-refuge-19940.herokuapp.com/prediction', songId )
+      .then(res => {
+        console.log(res)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+  }
 
   return (
     <>
@@ -46,6 +63,8 @@ const Dashboard = props => {
         <Likes />
       </div>
 
+      <button onClick={getSuggestions}>Get Suggestions</button>
+
       <div className="suggestions-container">
         <Suggestions />
       </div>
@@ -56,7 +75,8 @@ const Dashboard = props => {
 const mapStateToProps = state => {
   return {
     id: state.id,
-    songList: state.songList
+    songList: state.songList,
+    likedSongs: state.likedSongs
   }
 }
 export default connect(mapStateToProps, { setSongs })(Dashboard);
