@@ -309,3 +309,11 @@ input {
   color: white;
 }
 
+.like {
+  color: white;
+}
+
+.like img {
+  height: 60px;
+  width: 60px;
+}
