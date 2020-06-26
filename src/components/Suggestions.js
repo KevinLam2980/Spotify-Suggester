@@ -13,11 +13,21 @@ const Suggestions = props => {
             </h2>
             <div className="suggestions-render-ax">
                 {
-                    props.suggestions.map(suggestion => {
+                    (
+                        !props.hasSuggestions ? (
+                            'Like a song and get a suggestion!'
+                        ) : (props.suggestions.map(suggestion => {
                         // Return a suggestion component (we need to make this component)   
-                        return <Suggestion key={suggestion.id} artists={suggestion.artistName} />
-                    })
-                }
+                       return (
+                        <Suggestion
+                         key={suggestion.id} 
+                         artists={suggestion.artists[0]}
+                         album_image={suggestion.album_image}
+                         song_name={suggestion.song_name}
+                          />
+                       )
+                    })))
+                }       
             </div>
         </div>
     )
@@ -27,6 +37,7 @@ const Suggestions = props => {
 const mapStateToProps = state => {
     return {
         suggestions: state.suggestedSongs,
+        hasSuggestions: state.hasSuggestions,
     }
 }
 

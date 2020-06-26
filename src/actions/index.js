@@ -1,6 +1,7 @@
 import axios from 'axios';
 
 export const SET_SONGS = "SET_SONGS";
+export const SET_SUGGESTIONS = "SET_SUGGESTIONS"
 
 export const SHOW_LIKED = "SHOW_LIKED";
 export const CALL_ERROR = "CALL_ERROR";
@@ -37,3 +38,7 @@ export const addToLikes = song => dispatch => {
     dispatch({ type: "LIKE_SONG", payload: song })
 }
 
+
+export const addToSuggestions = suggestions => dispatch => {
+    dispatch({type: "SET_SUGGESTIONS", payload: suggestions})
+}
