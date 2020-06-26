@@ -3,7 +3,6 @@ import { connect } from "react-redux"
 import Like from "./Like";
 
 const Likes = props => {
-    console.log(props);
     return (
         <div className="likes">
             <h2 id='like-header-grn'>
