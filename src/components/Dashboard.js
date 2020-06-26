@@ -9,6 +9,7 @@ import SongList from "./SongList"
 
 import { connect } from "react-redux"
 import { setSongs } from "../actions/index";
+import { addToSuggestions } from "../actions/index"
 
 import spotifylogo from "../assets/spotifylogo.png"
 import axios from "axios";
@@ -26,23 +27,19 @@ const Dashboard = props => {
   // }, []);
 
   const getSuggestions = () => {
-
-    const songId = {
-      song_id_list: [
-        `${props.likedSongs[0].id}`
-      ],
-      recommendation_count: 10
-    }
-    axios.post('https://whispering-refuge-19940.herokuapp.com/prediction', songId)
-      .then(res => {
-        debugger;
-        console.log(res)
-      })
-      .catch(err => {
-        debugger;
-        console.log(err.message)
-      })
-
+     const proxyurl = "https://cors-anywhere.herokuapp.com/";
+      axios.post(proxyurl + 'https://whispering-refuge-19940.herokuapp.com/prediction',
+         {
+        "song_id_list":
+         [
+            `${props.likedSongs[0].id}`
+        ],
+        "recommendation_count": 10
+        })
+        .then(response => {
+         console.log(response.data.recommended_song_id_list)
+          props.addToSuggestions(response.data.recommended_song_id_list)
+        })
 
   }
 
@@ -81,7 +78,7 @@ const mapStateToProps = state => {
     likedSongs: state.likedSongs
   }
 }
-export default connect(mapStateToProps, { setSongs })(Dashboard);
+export default connect(mapStateToProps, { setSongs, addToSuggestions })(Dashboard);
 
 
 

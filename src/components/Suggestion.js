@@ -5,7 +5,7 @@ const Suggestion = props => {
         <div className="suggestion">
             <img src={props.album_image} alt="Song Art" />
             <h3>{props.song_name}</h3>
-            {/* <p>{props.artists[0]}</p> */}
+             <p>{props.artists}</p> 
         </div>
     )
 }
