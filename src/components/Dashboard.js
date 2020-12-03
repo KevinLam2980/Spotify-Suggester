@@ -1,14 +1,11 @@
 import React, { useEffect } from "react"
-import Search from "./Search"
 import Likes from "./Likes"
 import Suggestions from "./Suggestions"
-import SongList from "./SongList"
 import NavBar from './NavBar'
 import SearchSection from './SearchSection'
 
 import { connect } from "react-redux"
-import { setSongs } from "../actions/index";
-import { addToSuggestions } from "../actions/index"
+import { addToSuggestions, saveUserInfo, setSongs } from "../actions/index"
 
 
 
@@ -23,6 +20,14 @@ const Dashboard = props => {
   //     })
   // }, []);
 
+  useEffect(() => {
+    let userID = localStorage.getItem("id")
+    let userEmail = localStorage.getItem("email")
+    props.saveUserInfo({
+      id: userID,
+      email: userEmail
+    })
+  }, [])
 
   return (
     <div id="dashboard">
@@ -30,7 +35,6 @@ const Dashboard = props => {
       <div id="dashboardContent">
       <SearchSection/>
         <Likes />
-       
         <Suggestions />
       </div>
     </div>
@@ -44,7 +48,7 @@ const mapStateToProps = state => {
     likedSongs: state.likedSongs
   }
 }
-export default connect(mapStateToProps, { setSongs, addToSuggestions })(Dashboard);
+export default connect(mapStateToProps, { setSongs, addToSuggestions, saveUserInfo })(Dashboard);
 
 
 

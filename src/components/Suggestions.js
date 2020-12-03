@@ -1,6 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
 import Suggestion from './Suggestion'
+import Loader from 'react-loader-spinner'
 
 const Suggestions = props => {
     return (
@@ -12,8 +13,16 @@ const Suggestions = props => {
             </div>
             <div className="suggestions-render-ax">
                 {
-                    (
-                        !props.hasSuggestions ? (
+                    props.suggestionsLoading && props.suggestions.length === 0 ? 
+                    <Loader
+                    className="loader"
+                    type="Audio"
+                    color="#1DB954"
+                    height={100}
+                    width={100}
+                    timeout={5000} //5 secs
+                  /> :
+                        props.suggestions.length === 0 ? (
                             null
                         ) : (props.suggestions.map(suggestion => {
                         // Return a suggestion component (we need to make this component)   
@@ -26,7 +35,7 @@ const Suggestions = props => {
                          song_name={suggestion.song_name}
                           />
                        )
-                    })))
+                    }))
                 }       
             </div>
         </div>
@@ -37,7 +46,7 @@ const Suggestions = props => {
 const mapStateToProps = state => {
     return {
         suggestions: state.suggestedSongs,
-        hasSuggestions: state.hasSuggestions,
+        suggestionsLoading: state.suggestionsLoading
     }
 }
 

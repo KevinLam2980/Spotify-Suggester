@@ -1,12 +1,13 @@
 import React from 'react'
 import { connect } from "react-redux"
 import { setSongs } from "../actions/index";
-import { addToSuggestions } from "../actions/index"
+import { addToSuggestions, loadingSuggestions } from "../actions/index"
 import axios from "axios";
 
 const SuggestionBtn = props => {
 
   const getSuggestions = () => {
+    props.loadingSuggestions()
     const proxyurl = "https://cors-anywhere.herokuapp.com/";
      axios.post(proxyurl + 'https://whispering-refuge-19940.herokuapp.com/prediction',
         {
@@ -39,4 +40,4 @@ const mapStateToProps = state => {
       likedSongs: state.likedSongs
     }
   }
-  export default connect(mapStateToProps, { setSongs, addToSuggestions })(SuggestionBtn);
+  export default connect(mapStateToProps, { setSongs, addToSuggestions, loadingSuggestions })(SuggestionBtn);

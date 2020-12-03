@@ -15,8 +15,8 @@ const Likes = props => {
             <div className="imported-likes-ax">
                 {/* Map over Liked Songs here */}
                 {
-                    !props.hasLikedSongs ? (
-                       <p id="likeSomeSongs">Like some songs!</p>
+                    props.likes.length === 0 ? (
+                       <p id="likeSomeSongs">Like some songs and click 'Get Suggestions' to see a curated list of songs that are similar in accousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness, tempo, and valence!</p>
                     ) : (props.likes.map(song => {
                         return (
 
@@ -44,7 +44,6 @@ const Likes = props => {
 const mapStateToProps = state => {
     return {
         likes: state.likedSongs,
-        hasLikedSongs: state.hasLikedSongs,
     }
 }
 

@@ -1,90 +1,89 @@
-import albumArt from "../assets/albumArt.jpg"
-import { useState } from "react";
-
-import {REMOVE_LIKE} from '../actions'
+import {REMOVE_LIKE,
+    SET_SONGS,
+    SET_SUGGESTIONS,
+    CALL_ERROR,
+    LIKE_SONG,
+    UPDATE_USER,
+    ID,
+    SAVE_USER,
+    UPDATE_EMAIL,
+    START_SEARCH,
+    LOAD_SUGGESTIONS
+} from '../actions'
 
 export const intialState = {
+    email: "",
     id: "",
     likedSongs: [],
     suggestedSongs: [],
     songList: [],
-    isFethcingData: false,
     errorMessage: "",
-    hasLikedSongs: false,
-    hasSuggestions: false
-
+    searchLoading: false,
+    suggestionsLoading: false
 };
 
 export const spotifyReducer = (state = intialState, action) => {
     switch (action.type) {
-        case 'GET_ID':
+        case ID: {
             return {
                 ...state,
-                isFethcingData: true,
-                hasLikedSongs: false
-            }
-        case 'ID': {
-            return {
-                ...state,
-                email: "",
-                id: action.payload,
+                email: action.payload.email,
+                id: action.payload.id,
                 likedSongs: [],
                 suggestedSongs: [],
-                songList: [
-                    {
-                        id: 0,
-                        songName: "hasd",
-                        artistName: "asdasd"
-                    }
-                ],
-                isFethcingData: false,
+                songList: [],
                 errorMessage: "",
             }
         }
-        case "INIT_LOAD":
+        case SAVE_USER:
             return {
                 ...state,
-                isFethcingData: true,
-                id: action.payload
-            };
-        case "SHOW_LIKED":
+                id: action.payload.id,
+                email: action.payload.email
+            }
+        case START_SEARCH:
             return {
                 ...state,
-                isFethcingData: false,
-                likedSongs: action.payload
-            };
-
-        case "SET_SONGS":
+                searchLoading: true
+            }
+        case SET_SONGS:
             return {
                 ...state,
-                isFethcingData: true,
-                songList: action.payload
+                songList: action.payload,
+                searchLoading: false
             };
-        case 'UPDATE_USER':
-
+        case UPDATE_USER:
             return {
                 ...state,
                 email: action.payload
             };
-        case "LIKE_SONG":
+        case LIKE_SONG:
             return {
                 ...state,
                 songList: state.songList.filter(song => song.id !== action.payload.id),
                 likedSongs: [...state.likedSongs, action.payload],
-                // likedSongs: [action.payload],
-                hasLikedSongs: true
             }
-        case "SET_SUGGESTIONS" : 
+        case LOAD_SUGGESTIONS :
+            return {
+                ...state,
+                suggestionsLoading: true
+            }
+        case SET_SUGGESTIONS : 
             return{
                 ...state,
                 suggestedSongs: action.payload,
-                hasSuggestions: true
+                suggestionsLoading: false
             }
         case REMOVE_LIKE : 
             return {
                 ...state,
                 songList: [ action.payload, ...state.songList],
                 likedSongs: state.likedSongs.filter(song => song.id !== action.payload.id)
+            }
+        case UPDATE_EMAIL:
+            return {
+                ...state,
+                email: action.payload
             }
         default:
             return state;

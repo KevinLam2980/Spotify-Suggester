@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { connect } from "react-redux"
-import { loginCall } from "../actions/index"
+import { loginCall, errorCall } from "../actions/index"
 import axios from "axios";
 import axiosWithAuth from "../util/axiosWithAuth";
 import formSchema from '../Validation/formSchema'
@@ -47,26 +47,26 @@ const SignIn = props => {
         setForm({ ...form, [name]: value });
     }
 
-    // let loginUser = () => {
-    //     loginCall(form);
-    //     setForm(emptyUser);
-
-    // }
-
-
-
     const handleSubmit = e => {
         e.preventDefault();
         const existingUser = {
             email: form.email.trim(),
             password: form.password.trim()
         }
-        props.loginCall(existingUser);
         setForm(emptyUser);
-        // set a timeout - 2 seconds
-        setTimeout(function () { push("/dashboard") }, 2000);
-
-
+        axios
+        .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", existingUser)
+        .then(response => {
+            localStorage.setItem('token', response.data.token)
+            localStorage.setItem('email', response.data.email)
+            localStorage.setItem('id', response.data.id);
+            console.log(response)
+            props.loginCall(response.data)
+            push("/dashboard")
+        })
+        .catch(error => {
+            props.errorCall(error)
+        })
     }
 
     useEffect(() => {
@@ -116,4 +116,4 @@ const SignIn = props => {
 }
 
 
-export default connect(null, { loginCall })(SignIn);
+export default connect(null, { loginCall, errorCall })(SignIn);
