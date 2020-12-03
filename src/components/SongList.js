@@ -14,7 +14,7 @@ const SongList = props => {
 
             {
                 !props.isFethcingData ? (
-                    'Search for something!'
+                    <p id="searchForASong">Search for a song!</p>
                 ) : (props.songList.map(song => {
                     return (
                         <Song

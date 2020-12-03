@@ -83,7 +83,7 @@ const SignUp = props => {
     return (
         <div className="signin-div">
 
-            <h2>Connect with Spotify!</h2>
+            <h2>Create an account!</h2>
             <div className="schemaErrors">
                 <h4>{formErrors.email}</h4>
                 <h4>{formErrors.password}</h4>
@@ -98,7 +98,7 @@ const SignUp = props => {
                 />
                 <br />
                 <input
-                    type="text"
+                    type="password"
                     name="password"
                     placeholder="Enter password"
                     value={form.password}
@@ -108,9 +108,9 @@ const SignUp = props => {
                 <button className="signup" disabled={disabled}>Sign up</button>
             </form>
             <div>
-                <p>Already registered?
+                <p>Already registered?</p>
                     <div className="login" onClick={handleClick}>Log in</div>
-                </p>
+                
             </div>
         </div>
     )

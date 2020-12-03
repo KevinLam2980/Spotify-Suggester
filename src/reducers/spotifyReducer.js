@@ -1,6 +1,8 @@
 import albumArt from "../assets/albumArt.jpg"
 import { useState } from "react";
 
+import {REMOVE_LIKE} from '../actions'
+
 export const intialState = {
     id: "",
     likedSongs: [],
@@ -68,7 +70,8 @@ export const spotifyReducer = (state = intialState, action) => {
             return {
                 ...state,
                 songList: state.songList.filter(song => song.id !== action.payload.id),
-                likedSongs: [action.payload],
+                likedSongs: [...state.likedSongs, action.payload],
+                // likedSongs: [action.payload],
                 hasLikedSongs: true
             }
         case "SET_SUGGESTIONS" : 
@@ -76,6 +79,12 @@ export const spotifyReducer = (state = intialState, action) => {
                 ...state,
                 suggestedSongs: action.payload,
                 hasSuggestions: true
+            }
+        case REMOVE_LIKE : 
+            return {
+                ...state,
+                songList: [ action.payload, ...state.songList],
+                likedSongs: state.likedSongs.filter(song => song.id !== action.payload.id)
             }
         default:
             return state;

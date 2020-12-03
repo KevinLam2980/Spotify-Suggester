@@ -82,7 +82,7 @@ const SignIn = props => {
 
     return (
         <div className="signin-div">
-            <h2>Welcome back! Log in</h2>
+            <h2>Welcome back!</h2>
             <div className="schemaErrors">
                 <h4>{formErrors.email}</h4>
                 <h4>{formErrors.password}</h4>
@@ -97,7 +97,7 @@ const SignIn = props => {
                 />
                 <br />
                 <input
-                    type="text"
+                    type="password"
                     name="password"
                     placeholder="Enter password"
                     value={form.password}
@@ -107,9 +107,9 @@ const SignIn = props => {
                 <button className="signup" disabled={disabled}>Log in</button>
             </form>
             <div>
-                <p>New here?
+                <p>New here?</p>
                     <div className="login" onClick={routeToSignup}>Sign up</div>
-                </p>
+                
             </div>
         </div>
     )

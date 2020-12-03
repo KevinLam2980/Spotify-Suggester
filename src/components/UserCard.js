@@ -3,8 +3,6 @@ import {useHistory, Link} from "react-router-dom"
 
 import { connect } from "react-redux"
 
-import axios from "axios"
-
 import axiosWithAuth from "../util/axiosWithAuth"
 
 const UserCard = props => {
@@ -96,24 +94,26 @@ const UserCard = props => {
 
     return (
         <div className="user-card-d">
+            <div id="userProfileContainer">
+            <h2>Welcome Back!</h2>
             <form onSubmit={submitHandler}>
-                <label className="username-label">Username</label>
+                <label className="username-label">Change username:</label>
                 <input 
                 type="text"
                 value={user.email}
                 name="email"
                 onChange={changeHandler}
-                placeholder="Username"
+                placeholder="Enter your new username"
                 id="username-input"
                 />             
                 
                 <button className="account-update-btn"> Save Changes</button>
                 
             </form>
-             <Link to="/dashboard" className="back-to-dashboard"><button> Go back </button></Link> 
+             <Link to="/dashboard" className="back-to-dashboard">Go back</Link> 
             <button className="delete-account-btn" onClick={deleteAccount}>Delete Account</button>
             <button className="account-logout-btn" onClick={logOut}> Log Out</button>
-        
+            </div>
         </div>
     )
 }

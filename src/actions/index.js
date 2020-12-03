@@ -14,6 +14,8 @@ export const UPDATE_USER = "UPDATE_USER";
 export const GET_ID = "GET_ID";
 export const ID = "ID"
 
+export const REMOVE_LIKE = "REMOVE_LIKE"
+
 
 export const loginCall = existingUser => dispatch => {
     dispatch({ type: "GET_ID" })
@@ -41,4 +43,8 @@ export const addToLikes = song => dispatch => {
 
 export const addToSuggestions = suggestions => dispatch => {
     dispatch({type: "SET_SUGGESTIONS", payload: suggestions})
+}
+
+export const removeLike = song => dispatch => {
+    dispatch({ type: REMOVE_LIKE, payload: song })
 }
