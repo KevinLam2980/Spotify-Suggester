@@ -1,12 +1,10 @@
 import React from 'react';
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route} from 'react-router-dom';
 import PrivateRoute from "./util/PrivateRoute";
 
 import './App.css';
 
-
 //Component Imports
-import Search from './components/Search';
 import SignUp from './components/SignUp';
 import Login from './components/Login';
 import Dashboard from "./components/Dashboard"

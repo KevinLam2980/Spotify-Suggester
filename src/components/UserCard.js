@@ -105,9 +105,9 @@ const UserCard = props => {
                     <button className="account-update-btn"> Save Changes</button>
                     
                 </form>
-                <Link to="/dashboard" className="back-to-dashboard">Go back</Link> 
+                <Link to="/dashboard" className="back-to-dashboard">Go Back</Link> 
                 <button className="delete-account-btn" onClick={deleteAccount}>Delete Account</button>
-                <button className="account-logout-btn" onClick={logOut}> Log Out</button>
+                <button className="account-logout-btn" onClick={logOut}>Log Out</button>
                 </div>
             </div>
         </div>

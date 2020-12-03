@@ -3,7 +3,6 @@ import { useHistory } from "react-router-dom"
 import { connect } from "react-redux"
 import { loginCall, errorCall } from "../actions/index"
 import axios from "axios";
-import axiosWithAuth from "../util/axiosWithAuth";
 import formSchema from '../Validation/formSchema'
 import * as Yup from 'yup'
 

@@ -1,7 +1,7 @@
 import {REMOVE_LIKE,
     SET_SONGS,
     SET_SUGGESTIONS,
-    CALL_ERROR,
+    // CALL_ERROR,
     LIKE_SONG,
     UPDATE_USER,
     ID,

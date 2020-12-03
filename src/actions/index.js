@@ -1,5 +1,3 @@
-import axios from 'axios';
-
 export const START_SEARCH = "START_SEARCH"
 export const SET_SONGS = "SET_SONGS";
 
@@ -19,8 +17,6 @@ export const ID = "ID"
 
 export const SAVE_USER = "SAVE_USER"
 export const UPDATE_EMAIL = "UPDATE_EMAIL"
-
-
 
 
 export const loginCall = response => dispatch => {
