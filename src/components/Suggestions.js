@@ -1,32 +1,41 @@
 import React from "react"
-
-
 import { connect } from "react-redux"
-
 import Suggestion from './Suggestion'
+import Loader from 'react-loader-spinner'
 
 const Suggestions = props => {
     return (
         <div className="suggestions">
+            <div id="suggestionsTitle">
             <h2 className="suggestions-header-grn">
                 Suggestions:
             </h2>
+            </div>
             <div className="suggestions-render-ax">
                 {
-                    (
-                        !props.hasSuggestions ? (
-                            'Like a song and get a suggestion!'
+                    props.suggestionsLoading && props.suggestions.length === 0 ? 
+                    <Loader
+                    className="loader"
+                    type="Audio"
+                    color="#1DB954"
+                    height={100}
+                    width={100}
+                    timeout={5000} //5 secs
+                  /> :
+                        props.suggestions.length === 0 ? (
+                            null
                         ) : (props.suggestions.map(suggestion => {
                         // Return a suggestion component (we need to make this component)   
                        return (
                         <Suggestion
-                         key={suggestion.id} 
+                         key={suggestion.song_id}
+                         id={suggestion.song_id} 
                          artists={suggestion.artists[0]}
                          album_image={suggestion.album_image}
                          song_name={suggestion.song_name}
                           />
                        )
-                    })))
+                    }))
                 }       
             </div>
         </div>
@@ -37,7 +46,7 @@ const Suggestions = props => {
 const mapStateToProps = state => {
     return {
         suggestions: state.suggestedSongs,
-        hasSuggestions: state.hasSuggestions,
+        suggestionsLoading: state.suggestionsLoading
     }
 }
 

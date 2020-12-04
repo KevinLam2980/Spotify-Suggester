@@ -1,296 +1,459 @@
+/* CSS reset */
+html, body, div, span, applet, object,
+iframe, h1, h2, h3, h4, h5, h6, p, blockquote,
+pre, a, abbr, acronym, address, big, cite,
+code, del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var, b,
+u, i, center, dl, dt, dd, ol, ul, li, fieldset,
+form, label, legend, table, caption, tbody,
+tfoot, thead, tr, th, td, article, aside,
+canvas, details, embed, figure, figcaption,
+footer, header, hgroup, menu, nav, output, ruby,
+section, summary, time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+
+*{
+  box-sizing: border-box;
+}
 .App {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   text-align: center;
+  width: 100%;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  justify-content: center;
+  background-color: #191414;
+  color: white;
 }
 body {
-  background-color: #0c0a04;
-}
-.header-container {
-  height: 15vh;
-  background-color: #1db954;
-}
-.search-container {
-  height: 25vh;
-}
-.userData-container {
-  height: 60vh;
-  background-color: #1db954;
-}
-.data-split-container {
-  display: flex;
-  justify-content: space-evenly;
-  height: 45vh;
-}
-.song-list-container {
-  margin: 2% 2%;
-  padding: 4%;
-  width: 45%;
-  background-color: white;
-  border: 1px solid rgb(210, 210, 210);
-  border-radius: 6px;
-  box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
-}
-.mood-filters-container {
   background-color: #191414;
-  height: 15vh;
+}
+button:focus, button:active {
+  outline: none;
+}
+
+/* navBar */
+.nav {
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
+  height: 100px;
+  width: 100%;
+  background-color: #191414;
+  /* background-color: #1DB954; */
 }
-.mood-filter {
-  margin: 2% 2%;
-  width: 15%;
-  background-color: white;
-  border: 1px solid rgb(210, 210, 210);
-  border-radius: 6px;
-  box-shadow: 0px 1px 6px -2px rgb(128, 127, 127);
+
+#navContainer {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  padding: 2rem;
 }
-#logo {
-  position: absolute;
+
+.nav #logo {
   height: 60px;
   width: 185px;
-  top: 60px;
-  right: 0px;
-  left: 10%;
-  bottom: 0px;
 }
+
+/* dashboard */
+#dashboard {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+#dashboardContent {
+  display: flex;
+  height: 90vh;
+}
+
+/* search section */
+#searchSection {
+  width: 33.33%;
+}
+
+#searchBar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  width: 100%;
+  background-color: #1DB954;
+  /* border-right: 2px solid #191414; */
+}
+
+#searchBar form {
+  display: flex;
+  justify-content: center;
+  align-self: center;
+  width: 100%;
+}
+
+#query {
+  width: 80%;
+  text-align: center;
+  font-size: 1.2rem;
+  padding: 0.75rem 1rem;
+  border-radius: 50px;
+  background-color: #191414;
+  border: none;
+  color: #1DB954;
+}
+
+#query:hover, #query:focus, #query:active{
+  outline: none;
+  background-color: #191414;
+  border: none;
+  color: #1DB954;
+}
+
+#query:-webkit-autofill,
+#query:-webkit-autofill:hover, 
+#query:-webkit-autofill:focus, 
+#query:-webkit-autofill:active {
+  transition: background-color 5000s ease-in-out 0s;
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: #1DB954 !important;
+}
+
 .svg-icon {
-  position: absolute;
-  left: 30%;
-  top: 60px;
-  height: 30px;
+  margin-right: 0.5rem;
   width: 30px;
-  fill: white;
+  fill: #191414;
 }
-#query{
-  position: absolute;
-  width: 470px;
-  border-radius: 2px;
-  border: none;
-  top: 2.6%;
-  left: 33%;
-}
-#query:focus {
-  border: #FFFF;
-}
-.user-card {
-  position: absolute;
-  left: 85%;
-  top: 5%;
-}
-.likes-container {
-  position: absolute;
-  top: 65%;
-  left: 10%;
-  background-color: #191414;
-  width: 30%;
-}
-.rendered-songs {
-  margin: 1% auto;
-  /* background-color: pink; */
-  height: 30vh;
-  width: 80%;
-  background-color: white;
-}
-.suggestions-container {
-  margin: 1% auto;
-  /* background-color: pink; */
-  height: 30vh;
-  width: 80%;
-  background-color: white;
-}
-.likes-container h2 {
-  color: white;
-}
-#like-header-grn {
-  color: #1db954;
-}
-.user-card-d {
-  position: absolute;
-  width: 444px;
-  height: 624px;
-  left: 35%;
-  top: 10%;
-  background: #191414;
-  border-radius: 5px 5px 5px 5px;
-}
-#username-input {
-  position: absolute;
-  top: 40%;
-  right: 18.77%;
-  background: #FFFFFF;
-  border-radius: 5px;
-  height: 30px;
-  border:none;
-  width: 280px;
-}
-.username-label{
-  position: absolute;
-  right: 66%;
-  top: 35%;
-  color: white;
-}
-.account-update-btn{
-  position: absolute;
-  top: 70%;
-  right: 18%;
-  width: 280px;
-  height: 32px;
-  background:#1db954 ;
-  border-radius: 5px;
-  border: none;
-  color: white;
-}
-.account-logout-btn{
-  position: absolute;
-  top: 90%;
-  right: 18%;
-  width: 280px;
-  height: 32px;
-  background: #FFFFFF;
-  border-radius: 5px;
-  border: none;
-  color: black;
-}
-.user-card-d h2 {
-  position: absolute;
-  top: 22%;
-  right: 35.2%;
-  color: #1db954;
-}
-.user-card-d a{
-  position: absolute;
-  top: 60%;
-  right: 46%;
-  text-decoration: none;
-  color: #1db954;
-}
-.user-card-d img {
-  border: 1px white solid;
-  height: 120px;
-  width: 120px;
-  position: absolute;
-  top: 3%;
-  left: 35.5%;
-  border-radius: 30px;
-}
-.suggestions-container {
-  position: absolute;
-  top: 65%;
-  left: 60%;
-  background-color: #191414;
-  width: 30%;
-  color: white;
-  height: 350px;
-}
-.suggestions-container img {
-  height: 50px;
-  width: 50px;
-}
-.suggestions-container h2 {
-  color: white
-}
-.suggestions-header-grn {
-  color: #1db954
-}
-.suggestion::-webkit-scrollbar {
-  display: none;
-}
-.suggestion {
-  color:white;
-  -ms-overflow-style: none;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-}
-#dropdown {
-  position: absolute;
-  top: 7%;
-  width: 200px;
-  left: 33%;
-}
-/* Signin component */
-.signin-div {
-  color: white;
-  padding: 10%;
-  margin: 8% 15%;
-}
-h2 {
-  font-size: 3rem;
-}
-input {
-  margin: 1% 0;
-  padding: 1.5% 3%;
-}
-.signup {
-  background-color: #1cb853;
-  border-radius: 500px;
-  color: white;
-  font-size: 1rem;
-  padding: 1.5% 3%;
-}
-.signup:hover {
-  background-color: #1ED760;
-  cursor: pointer;
-}
-.login:hover {
-  cursor: pointer;
-}
-.rendered-songs {
-  height: 35vh;
-  margin: 0 auto; 
-  overflow: auto;
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: space-evenly;
-}
-.suggestions-container {
-  height: 35vh;
-  margin: 0 auto; 
-  overflow: auto;
-  display: flex;
-  flex-wrap: wrap; 
-  justify-content: space-evenly;
-}
-.song::-webkit-scrollbar {
-  display: none
-}
-.song{
-  color:black;
-  -ms-overflow-style: none;
-  width: 100%;
-  margin: 0 auto;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-evenly;
-  align-items: center;
-}
-.song img {
-  height: 60px;
-  width: 60px;
-}
+/* songs */
 .render-songs-cnt {
+  display: flex;
+  flex-direction: column;
+  overflow-y: scroll;
+  overflow-x: hidden;
   width: 100%;
+  height: 100%;
+  padding-bottom: 100px;
 }
-.delete-account-btn {
-  position:absolute;
-  top: 82%;
-  width: 280px;
-  height: 32px;
-  right: 18%;
-  background:red;
-  border-radius: 5px;
-  border: none;
-  color: white;
+
+.song {
+display: flex;
+justify-content: space-between;
+width: 100%;
+height: 125px;
+border-bottom: 1px solid black;
+cursor: pointer;
+}
+
+.songInfo {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  margin: 0 1rem;
+}
+
+.song img {
+   width: 125px;
+   border: 1px solid black;
+}
+.song .songInfo h4 {
+  width: 33.33%;
+}
+.song .songInfo p {
+  width: 33.33%;
+}
+
+#searchForASong, #likeSomeSongs {
+  font-size: 1.25rem;
+  padding: 2rem 1rem;
+}
+
+/* favorites */
+.likes {
+  height: 100%;
+  width: 33.33%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  border-left: 5px solid #1DB954;
 }
 .like {
-  color: white;
+  display: flex;
+  height: 125px;
+  width: 100%;
+  border-bottom: 1px solid black;
+  cursor: pointer;
 }
 .like img {
-  height: 60px;
-  width: 60px;
+  width: 125px;
+  border: 1px solid black;
+}
+/* recomendations */
+.suggestions {
+  width: 33.33%;
+  height: 100%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  height: 100%;
+  border-left: 5px solid #1DB954;
+}
+
+.suggestion {
+  height: 125px;
+  width: 100%;
+  display: flex;
+  border-bottom: 1px solid black;
+}
+
+.suggestion img {
+  width: 125px;
+  border: 1px solid black;
+}
+
+#getSuggestionsBTN {
+  position: absolute;
+  padding: 0.5rem 1rem;
+  border-radius: 50px;
+  z-index: 100;
+  transform: translate(-80px ,15px);
+  border: 1px solid #1DB954;
+  background-color: #191414;
+  color: #1DB954;
+  font-size: 1.1rem;
+  cursor: pointer;
+
+}
+
+#getSuggestionsBTN:hover {
+  transition: 0.6s ease-out;
+  background-color: #1DB954;
+  border: 1px solid #191414;
+  color: #191414;
+}
+
+
+#favoritesTitle, #suggestionsTitle {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  position: fixed;
+  width: 33.33%;
+  background-color: #1DB954;
+  
+}
+
+/* #favoritesTitle h2 {
+  transform: translateY(20px);
+} */
+
+#favoritesTitle h2, #suggestionsTitle h2{
+  font-size: 1.75rem;
+  color: black;
+  align-self: center;
+  justify-content: center;
+}
+
+.likeInfo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  margin: 0 1rem;
+}
+
+.likeInfo h4 {
+  width: 33.33%;
+}
+.likeInfo p {
+  width: 33.33%;
+}
+
+.imported-likes-ax, .suggestions-render-ax {
+  padding-top: 100px;
+  padding-bottom: 200px;
+  height: 100%;
+}
+
+.suggestionInfo {
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  width: 100%;
+  margin: 0 1rem;
+}
+
+.suggestionInfo h3 {
+  /* width: 33.33%; */
+  width: 50%;
+}
+.likeIsuggestionInfonfo p {
+   /* width: 33.33%; */
+   width: 50%;
+}
+
+.likeBTN {
+  transition: 0.6s ease-out;
+  display: inline-block;
+  overflow: hidden;
+  width: 0%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: #1DB954;
+}
+
+.song:hover .likeBTN {
+  display: inline-block;
+  width: 10%;
+  border: none;
+  overflow: hidden;
+}
+
+.song:hover, .like:hover, .suggestion:hover {
+  transition: 0.5s ease-out;
+  box-shadow: 0 0 8px #1DB954;
+}
+
+.removeLike {
+  transition: 0.6s ease-out;
+  display: inline-block;
+  overflow: hidden;
+  width: 0%;
+  padding: 0;
+  margin: 0;
+  border: none;
+  background-color: crimson;
+  font-size: 1.25rem;
+}
+
+.like:hover .removeLike {
+  display: inline-block;
+  width: 10%;
+  border: none;
+  overflow: hidden;
+}
+
+.user-card:hover .profile {
+  transition: 0.6s ease-out;
+  color: white;
+  fill: white;
+}
+
+/* usercard */
+.user-card-d, .signin-div {
+  background-color: #1DB954;
+  width: 35%;
+  height: 400px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-radius: 50px;
+  color: black;
+}
+
+.user-card-d form, .signin-div form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 2rem;
+  width: 100%;
+}
+
+.user-card-d input, .signin-div input {
+  width: 60%;
+  margin: 0 auto;
+  padding: 0.5rem 1rem;
+  text-align: center;
+  border-radius: 50px;
+  font-size: 1.1rem;
+  border: none;
+  color: white;
+  background-color: #191414;
+}
+
+.user-card-d input:focus, .user-card-d input:active, .signin-div input:active,  .signin-div input:focus {
+  outline: none;
+}
+
+.user-card-d button, .back-to-dashboard, .delete-account-btn, .account-logout-btn, .signup, .login {
+  color: white;
+  background-color: #191414;
+  border: none;
+  border-radius: 50px;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  display: inline-block;
+  width: 200px;
+  margin: 0.25rem;
+  text-decoration: none;
+  font-weight: 100;
+}
+
+.signup:disabled {
+  background-color: grey;
+}
+
+.user-card-d button:hover, .back-to-dashboard:hover, .delete-account-btn:hover, .account-logout-btn:hover {
+  background-color: black;
+  transition: 0.7s ease-out;
+  cursor: pointer;
+}
+
+.user-card-d form > *, .signin-div form > * {
+  margin: 0.25rem;
+
+}
+
+#userProfileContainer {
+  padding: 2rem;
+}
+
+.user-card-d h2, .signin-div h2 {
+  font-size: 2.5rem;
+  margin: 2rem 0;
+}
+
+#usercardBackground {
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+#userSuccessAlert {
+  transition: 0.6s ease-out;
+  position: absolute;
+  top: 0;
+  height: 0px;
+  width: 500px;
+  background-color: #1DB954;
+  border: none;
+  border-radius: 0 0 50px 50px;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+  padding: 0 2rem;
+}
+
+.loader {
+  margin-top: 25vh;
 }

@@ -1,20 +1,24 @@
 import React from "react"
-import { connect } from "react-redux";
+import { connect } from "react-redux"
+import Loader from 'react-loader-spinner'
 
 import Song from "./Song"
 
 const SongList = props => {
     return (
         <div className="render-songs-cnt">
-
-            {/* If isFethcingData = falsey 
-        then we go ahead and map over songsList,
-        but if isfetchingdata is true, we display a string 
-        that says 'Search for songs!' */}
-
-            {
-                !props.isFethcingData ? (
-                    'Search for something!'
+            {   
+                props.searchLoading && props.songList.length === 0 ? 
+                <Loader
+                className="loader"
+                type="Audio"
+                color="#1DB954"
+                height={100}
+                width={100}
+                timeout={5000} //5 secs
+              /> :
+                props.songList.length === 0 ? (
+                    <p id="searchForASong">Search for a song! Your results will populate here.</p>
                 ) : (props.songList.map(song => {
                     return (
                         <Song
@@ -28,8 +32,7 @@ const SongList = props => {
                         />
                     )
                 })
-                    )
-
+                )
             }
         </div>
 
@@ -40,7 +43,7 @@ const SongList = props => {
 const mapStateToProps = state => {
     return {
         songList: state.songList,
-        isFethcingData: state.isFethcingData
+        searchLoading: state.searchLoading
     }
 }
 

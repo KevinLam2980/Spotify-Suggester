@@ -1,30 +1,33 @@
 import React from "react"
 import { connect } from "react-redux"
 import Like from "./Like";
+import SuggestionsBtn from './SuggestionsBtn'
 
 const Likes = props => {
     return (
         <div className="likes">
+            <div id='favoritesTitle'>
             <h2 id='like-header-grn'>
-                Likes:
+                Your liked songs:
             </h2>
+            <SuggestionsBtn />
+            </div>
             <div className="imported-likes-ax">
                 {/* Map over Liked Songs here */}
-
                 {
-                    !props.hasLikedSongs ? (
-                        'Like a song!'
-                    ) : (props.likes.map(like => {
+                    props.likes.length === 0 ? (
+                       <p id="likeSomeSongs">Like some songs and click 'Get Suggestions' to see a curated list of songs that are similar in accousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness, tempo, and valence!</p>
+                    ) : (props.likes.map(song => {
                         return (
 
                             <Like
-                                key={like.id}
-                                id={like.id}
-                                name={like.name}
-                                album={like.album.name}
-                                artist={like.artists[0].name}
-                                image={like.album.images[0].url}
-                                like={like}
+                                key={song.id}
+                                id={song.id}
+                                name={song.name}
+                                album={song.album.name}
+                                artist={song.artists[0].name}
+                                image={song.album.images[0].url}
+                                song={song}
                             />
                         )
 
@@ -41,7 +44,6 @@ const Likes = props => {
 const mapStateToProps = state => {
     return {
         likes: state.likedSongs,
-        hasLikedSongs: state.hasLikedSongs,
     }
 }
 

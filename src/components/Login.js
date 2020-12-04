@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react"
 import { useHistory } from "react-router-dom"
 import { connect } from "react-redux"
-import { loginCall } from "../actions/index"
+import { loginCall, errorCall } from "../actions/index"
 import axios from "axios";
-import axiosWithAuth from "../util/axiosWithAuth";
 import formSchema from '../Validation/formSchema'
 import * as Yup from 'yup'
 
@@ -47,26 +46,26 @@ const SignIn = props => {
         setForm({ ...form, [name]: value });
     }
 
-    // let loginUser = () => {
-    //     loginCall(form);
-    //     setForm(emptyUser);
-
-    // }
-
-
-
     const handleSubmit = e => {
         e.preventDefault();
         const existingUser = {
             email: form.email.trim(),
             password: form.password.trim()
         }
-        props.loginCall(existingUser);
         setForm(emptyUser);
-        // set a timeout - 2 seconds
-        setTimeout(function () { push("/dashboard") }, 2000);
-
-
+        axios
+        .post("https://spotify-suggestions-backend.herokuapp.com/auth/login", existingUser)
+        .then(response => {
+            localStorage.setItem('token', response.data.token)
+            localStorage.setItem('email', response.data.email)
+            localStorage.setItem('id', response.data.id);
+            console.log(response)
+            props.loginCall(response.data)
+            push("/dashboard")
+        })
+        .catch(error => {
+            props.errorCall(error)
+        })
     }
 
     useEffect(() => {
@@ -82,7 +81,7 @@ const SignIn = props => {
 
     return (
         <div className="signin-div">
-            <h2>Welcome back! Log in</h2>
+            <h2>Welcome back!</h2>
             <div className="schemaErrors">
                 <h4>{formErrors.email}</h4>
                 <h4>{formErrors.password}</h4>
@@ -97,7 +96,7 @@ const SignIn = props => {
                 />
                 <br />
                 <input
-                    type="text"
+                    type="password"
                     name="password"
                     placeholder="Enter password"
                     value={form.password}
@@ -107,13 +106,13 @@ const SignIn = props => {
                 <button className="signup" disabled={disabled}>Log in</button>
             </form>
             <div>
-                <p>New here?
+                <p>New here?</p>
                     <div className="login" onClick={routeToSignup}>Sign up</div>
-                </p>
+                
             </div>
         </div>
     )
 }
 
 
-export default connect(null, { loginCall })(SignIn);
+export default connect(null, { loginCall, errorCall })(SignIn);
