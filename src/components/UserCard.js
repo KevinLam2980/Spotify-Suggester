@@ -9,10 +9,8 @@ const UserCard = props => {
         email: "",
     })
     const [username, setUsername] = useState()
-
-    const {
-        push
-    } = useHistory();
+    const { email, saveUserInfo } = props
+    const { push } = useHistory();
 
     const changeHandler = e => {
         let name = e.target.name;
@@ -75,25 +73,25 @@ const UserCard = props => {
         push('/user')
     }
 
-    useEffect(() => {
+    useEffect((props) => {
         let userID = localStorage.getItem("id")
         let userEmail = localStorage.getItem("email")
-        props.saveUserInfo({
+        saveUserInfo({
           id: userID,
           email: userEmail
         })
         let user_name = userEmail.split("@")
         setUsername(user_name[0][0].toUpperCase() + user_name[0].slice(1))
-      }, [props.email])
+      }, [saveUserInfo, email])
     
     return (
         <div id="usercardBackground">
-            <div id="userSuccessAlert">Congrats you updated your username to: {user.email}</div>
+            <div id="userSuccessAlert">Congrats you updated your username to: {email}</div>
             <div className="user-card-d">
                 <div id="userProfileContainer">
                 <h2>Hello {username}!</h2>
                 <form onSubmit={submitHandler}>
-                    <label className="username-label">Change username:</label>
+                    <label className="username-label">Change email:</label>
                     <input 
                     type="text"
                     value={user.email}

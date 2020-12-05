@@ -10,15 +10,15 @@ import { addToSuggestions, saveUserInfo, setSongs } from "../actions/index"
 
 
 const Dashboard = props => {
-
-  useEffect(() => {
+const {saveUserInfo} = props
+  useEffect((props) => {
     let userID = localStorage.getItem("id")
     let userEmail = localStorage.getItem("email")
-    props.saveUserInfo({
+    saveUserInfo({
       id: userID,
       email: userEmail
     })
-  }, [])
+  }, [saveUserInfo])
 
   return (
     <div id="dashboard">
