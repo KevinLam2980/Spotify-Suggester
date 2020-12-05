@@ -1,15 +1,19 @@
 import React, {useState, useEffect} from "react"
-import {useHistory, Link} from "react-router-dom"
+import {useHistory, Link, useLocation} from "react-router-dom"
 import { connect } from "react-redux"
 import axiosWithAuth from "../util/axiosWithAuth"
 import {saveUserInfo, updateEmail} from '../actions'
 
+const initialState = {
+    email: "",
+}
+
+
 const UserCard = props => {
-    const [user, setUser] = useState({
-        email: "",
-    })
+    const [user, setUser] = useState(initialState)
     const [username, setUsername] = useState()
     const { email, saveUserInfo } = props
+    const location = useLocation()
     const { push } = useHistory();
 
     const changeHandler = e => {
@@ -48,15 +52,15 @@ const UserCard = props => {
         axiosWithAuth()
         .put(`/api/user/${props.id}`, updatedUser)
         .then(res =>{
-        console.log(res.config.data)
-        console.log(JSON.parse(res.config.data).email)
         let newEmail = JSON.parse(res.config.data).email
         localStorage.setItem("email", newEmail)
         props.updateEmail(newEmail)
         document.querySelector('#userSuccessAlert').style.height = "75px"
         setTimeout(() => {
-            document.querySelector('#userSuccessAlert').style.height = "0px"
-        }, 3000)
+            if(location.pathname.includes("user") && document.querySelector('#userSuccessAlert') != undefined){
+                document.querySelector('#userSuccessAlert').style.height = "0px"
+            }
+            }, 3000)
         })
         .catch(err =>{
             console.log(err)
@@ -70,10 +74,11 @@ const UserCard = props => {
             ...user
         }
         updateUser(updatedUser)
-        push('/user')
+        setUser(initialState)
+        // push('/user')
     }
 
-    useEffect((props) => {
+    useEffect(() => {
         let userID = localStorage.getItem("id")
         let userEmail = localStorage.getItem("email")
         saveUserInfo({
@@ -91,16 +96,16 @@ const UserCard = props => {
                 <div id="userProfileContainer">
                 <h2>Hello {username}!</h2>
                 <form onSubmit={submitHandler}>
-                    <label className="username-label">Change email:</label>
+                    <label className="username-label">Change user email:</label>
                     <input 
                     type="text"
                     value={user.email}
                     name="email"
                     onChange={changeHandler}
-                    placeholder="Enter your new username"
+                    placeholder={email}
                     id="username-input"
                     />             
-                    <button className="account-update-btn"> Save Changes</button>
+                    <button className="account-update-btn">Save Changes</button>
                     
                 </form>
                 <Link to="/dashboard" className="back-to-dashboard">Go Back</Link> 
