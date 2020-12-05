@@ -57,7 +57,7 @@ const UserCard = props => {
         props.updateEmail(newEmail)
         document.querySelector('#userSuccessAlert').style.height = "75px"
         setTimeout(() => {
-            if(location.pathname.includes("user") && document.querySelector('#userSuccessAlert') != undefined){
+            if(location.pathname.includes("user") && document.querySelector('#userSuccessAlert') !== null){
                 document.querySelector('#userSuccessAlert').style.height = "0px"
             }
             }, 3000)
