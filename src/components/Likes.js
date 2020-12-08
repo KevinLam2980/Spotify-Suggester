@@ -1,7 +1,7 @@
 import React from "react"
 import { connect } from "react-redux"
-import Like from "./Like";
 import SuggestionsBtn from './SuggestionsBtn'
+import Song from './Song'
 
 const Likes = props => {
     return (
@@ -19,8 +19,7 @@ const Likes = props => {
                        <p id="likeSomeSongs">Like some songs and click 'Get Suggestions' to see a curated list of songs that are similar in accousticness, danceability, energy, instrumentalness, liveness, loudness, speechiness, tempo, and valence!</p>
                     ) : (props.likes.map(song => {
                         return (
-
-                            <Like
+                            <Song
                                 key={song.id}
                                 id={song.id}
                                 name={song.name}
@@ -28,6 +27,7 @@ const Likes = props => {
                                 artist={song.artists[0].name}
                                 image={song.album.images[0].url}
                                 song={song}
+                                like={true}
                             />
                         )
 

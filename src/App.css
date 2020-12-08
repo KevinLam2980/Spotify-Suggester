@@ -460,3 +460,12 @@ overflow-x: hidden;
 .loader {
   margin-top: 25vh;
 }
+
+.songLink {
+  text-decoration: none;
+  color: white;
+  border: none;
+  padding: none;
+  margin: none;
+  outline: none;
+}

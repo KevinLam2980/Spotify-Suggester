@@ -37,14 +37,13 @@ const UserCard = props => {
         axiosWithAuth()
         .delete(`/api/user/${props.id}`)
         .then(res => {
-            console.log(res)
             localStorage.removeItem('token')
             localStorage.removeItem('id')
             localStorage.removeItem('email')
             push('/') 
         })
         .catch(err =>{
-            console.log(err)
+            console.error(err)
         })
     }
 
@@ -63,7 +62,7 @@ const UserCard = props => {
             }, 3000)
         })
         .catch(err =>{
-            console.log(err)
+            console.error(err)
         })
     }
 

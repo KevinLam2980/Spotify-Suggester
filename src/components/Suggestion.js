@@ -2,6 +2,7 @@ import React from "react"
 
 const Suggestion = props => {
     return (
+        <a className="songLink" href={`https://open.spotify.com/track/${props.id}`} target="_blank" rel="noopener noreferrer" alt="Spotify song link">
         <div className="suggestion">
             <img src={props.album_image} alt="Song Art" />
             <div className="suggestionInfo">
@@ -9,8 +10,8 @@ const Suggestion = props => {
                 <p>{props.artists}</p> 
                 <p>{props.album}</p> 
             </div>
-          
         </div>
+        </a>
     )
 }
 

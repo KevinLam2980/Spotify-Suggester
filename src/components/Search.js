@@ -20,7 +20,7 @@ const Search = props => {
         props.setSongs(response.data.tracks.items)
       })
       .catch(error => {
-        console.log(error);
+        console.error(error);
       })
   }
 

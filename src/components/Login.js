@@ -59,12 +59,12 @@ const SignIn = props => {
             localStorage.setItem('token', response.data.token)
             localStorage.setItem('email', response.data.email)
             localStorage.setItem('id', response.data.id);
-            console.log(response)
             props.loginCall(response.data)
             push("/dashboard")
         })
         .catch(error => {
             props.errorCall(error)
+            console.error(error)
         })
     }
 

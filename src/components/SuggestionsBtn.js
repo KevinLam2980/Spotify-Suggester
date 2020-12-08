@@ -15,11 +15,13 @@ const SuggestionBtn = props => {
          props.likedSongs.map(song => {
          return song.id
        }),
-       "recommendation_count": 20
+       "recommendation_count": 15
        })
        .then(response => {
-        // console.log(response.data.recommended_song_id_list)
          props.addToSuggestions(response.data.recommended_song_id_list)
+       })
+       .catch(err => {
+         console.error(err)
        })
 
  }
@@ -35,8 +37,6 @@ const SuggestionBtn = props => {
 
 const mapStateToProps = state => {
     return {
-    //   id: state.id,
-    //   songList: state.songList,
       likedSongs: state.likedSongs
     }
   }

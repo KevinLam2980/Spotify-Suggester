@@ -29,6 +29,7 @@ const SongList = props => {
                             artist={song.artists[0].name}
                             image={song.album.images[0].url}
                             song={song}
+                            like={false}
                         />
                     )
                 })

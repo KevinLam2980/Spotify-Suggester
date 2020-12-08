@@ -13,18 +13,16 @@ const Suggestions = props => {
             </div>
             <div className="suggestions-render-ax">
                 {
-                    props.suggestionsLoading && props.suggestions.length === 0 ? 
+                    props.suggestionsLoading ? 
                     <Loader
                     className="loader"
                     type="Audio"
                     color="#1DB954"
                     height={100}
                     width={100}
-                    timeout={5000} //5 secs
+                    timeout={15000} //5 secs
                   /> :
-                        props.suggestions.length === 0 ? (
-                            null
-                        ) : (props.suggestions.map(suggestion => {
+                     (props.suggestions.map(suggestion => {
                         // Return a suggestion component (we need to make this component)   
                        return (
                         <Suggestion
